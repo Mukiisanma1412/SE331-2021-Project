@@ -1,19 +1,55 @@
 <template>
   <div class="home">
-    <table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Status</th>
-    </tr>
-  </thead>
-  <tbody>
+    <div class="row">
+      <div class="col"></div>
+      <div class="col-8">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Status</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <PeopleList
+              v-for="people in peoples"
+              :key="people.id"
+              :people="people"
+            />
+          </tbody>
+        </table>
+      </div>
 
-    <PeopleList v-for="people in peoples" :key="people.id" :people="people" />
-  </tbody>
-</table>
-
+      <div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <ul class="pagination">
+          <li class="page-item">
+            <router-link
+              class="page-link"
+              id="page-prev"
+              :to="{ name: 'Home', query: { page: page - 1 } }"
+              rel="prev"
+            v-if="page != 1"
+              >Previous</router-link
+            >
+          </li>
+          <li class="page-item">
+            <router-link
+             class="page-link"
+              id="page-next"
+              :to="{ name: 'Home', query: { page: page + 1 } }"
+              rel="next"
+            v-if="hasNextPage"
+              >Next</router-link
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -21,9 +57,16 @@
 // @ is an alias to /src
 import PeopleList from "@/components/Peoplelist.vue";
 import EventService from "@/service/EventService.js";
+import { watchEffect } from '@vue/runtime-core'
 
 export default {
   name: "Home",
+  props: {
+    page: {
+      type: Number,
+      required: true
+    },
+  },
   components: {
     PeopleList,
   },
@@ -34,6 +77,7 @@ export default {
     };
   },
   created() {
+     watchEffect(() => {
     EventService.getPeoplelList(this.page)
       .then((response) => {
         this.peoples = response.data;
@@ -41,7 +85,13 @@ export default {
       })
       .catch((error) => {
         console.log(error);
-      });
+      });})
   },
+  computed: {
+    hasNextPage() {
+      let totalPages = Math.ceil(this.totalEvents / 10)
+      return this.page < totalPages
+    }
+  }
 };
 </script>
