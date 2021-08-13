@@ -1,8 +1,14 @@
 <template>
 
-    <div class="event-card">
-      <h4>{{ people.name }}</h4>
-    </div>
+
+      <h4></h4>
+       <tr>
+      
+      <td>{{ people.name }}</td>
+      <td>{{ people.Surname }}</td>
+      <td>{{ people.status }}</td>
+    </tr>
+  
 
 </template>
 

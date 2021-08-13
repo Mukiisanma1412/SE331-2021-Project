@@ -1,6 +1,19 @@
 <template>
   <div class="home">
+    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+
     <PeopleList v-for="people in peoples" :key="people.id" :people="people" />
+  </tbody>
+</table>
+
   </div>
 </template>
 
