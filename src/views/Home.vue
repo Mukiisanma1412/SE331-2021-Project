@@ -1,18 +1,34 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <PeopleList v-for="people in peoples" :key="people.id" :people="people" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import PeopleList from "@/components/Peoplelist.vue";
+import EventService from "@/service/EventService.js";
 
 export default {
   name: "Home",
   components: {
-    HelloWorld,
+    PeopleList,
+  },
+  data() {
+    return {
+      peoples: null,
+      totalEvents: 0,
+    };
+  },
+  created() {
+    EventService.getPeoplelList(this.page)
+      .then((response) => {
+        this.peoples = response.data;
+        this.totalEvents = response.headers["x-total-count"];
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
 };
 </script>
