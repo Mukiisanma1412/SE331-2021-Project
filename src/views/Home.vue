@@ -6,6 +6,7 @@
       <th scope="col">First</th>
       <th scope="col">Last</th>
       <th scope="col">Status</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>

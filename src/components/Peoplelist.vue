@@ -1,27 +1,25 @@
 <template>
+    <tr>
 
-
-      <h4></h4>
-       <tr>
-      
+  
       <td>{{ people.name }}</td>
       <td>{{ people.Surname }}</td>
       <td>{{ people.status }}</td>
-    </tr>
-  
-
+        <td><router-link :to="{ name: 'PeopleLayout', params: { id: people.id } }"> >>  </router-link> </td>
+ 
+  </tr>
 </template>
 
 <script>
 export default {
-  name: 'PeopleList',
+  name: "PeopleList",
   props: {
     people: {
       type: Object,
-      required: true
-    }
-  }
-}
+      required: true,
+    },
+  },
+};
 </script>
 
 <style scoped>
