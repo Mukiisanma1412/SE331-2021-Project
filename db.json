@@ -173,5 +173,40 @@
         "when": " 19 July 2021 "
       }
       
+    ],
+    "Vaccine" : [
+        {
+            "id":100,
+            "name": "Pfizer",
+            "detail": "The Pfizer mRNA vaccine delivers a tiny piece of genetic code from the SARS CoV-2 virus to host cells in the body, essentially giving those cells instructions, or blueprints, for making copies of spike proteins (the spikes you see sticking out of the coronavirus in pictures online and on TV).  ",
+            "Country": " United States of America"
+        },
+        {
+            "id":102,
+            "name": "Moderna",
+            "detail": "This is an mRNA vaccine that sends the body’s cells instructions for making a spike protein that will train the immune system to recognize it. The immune system will then attack the spike protein the next time it sees one (attached to a real SARS CoV-2 virus).",
+            "Country": " United States of America"
+        },
+        {
+            "id":103,
+            "name": "Johnson & Johnson",
+            "detail": "This is a carrier vaccine, which uses a different approach than the mRNA vaccines to instruct human cells to make the SARS CoV-2 spike protein.",
+            "Country": " United States of America"
+        },
+        {
+            "id":104,
+            "name": "Novavax",
+            "detail": "Unlike the mRNA and vector vaccines, this is a protein adjuvant (an adjuvant is an ingredient used to strengthen the immune response). While other vaccines trick the body’s cells into creating parts of the virus that can trigger the immune system",
+            "Country": " United States of America"
+        },
+        {
+            "id":105,
+            "name": "Sinopham",
+            "detail": "The Sinopharm vaccine is an inactivated coronavirus vaccine, like Covaxin developed by Bharat Biotech India (BBIL) in collaboration with the National Institute of Virology (NIV).",
+            "Country": " China"
+        }
+
+
+
     ]
   }
