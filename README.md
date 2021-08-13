@@ -1,4 +1,7 @@
-# project1
+# SE331-2021-Project
+Member 
+622115009 Thitinat Boonmapa
+622115041 Supatsara Rodchay
 
 ## Project setup
 ```
