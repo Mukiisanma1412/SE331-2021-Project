@@ -1,5 +1,6 @@
 <template>
-  <p> {{people.name}} </p>
+  <p> {{ people.name }}</p>
+
 </template>
 
 <script>
