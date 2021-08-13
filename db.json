@@ -6,7 +6,7 @@
         "Surname": "Ishikawa",
         "age": " 25 ",
         "home town": " Okazaki ",
-        "Vaccine": " [ ]  ",
+        "Vaccine":  104  ,
         "Vaccine name": " Novavax ",
         "status": " 1 ",
         "when": " 12 July 2021 "
@@ -17,7 +17,7 @@
         "Surname": "Nishida",
         "age": " 20 ",
         "home town": " Tokyo ",
-        "Vaccine": " [ ]  ",
+        "Vaccine":  102  ,
         "Vaccine name": " Moderna ",
         "status": " 2 ",
         "when": " 12 July 2021 "
@@ -27,7 +27,7 @@
         "Surname": "Takahashi",
         "age": " 19 ",
         "home town": " Okazaki ",
-        "Vaccine": " [ ]  ",
+        "Vaccine": 100  ,
         "Vaccine name": " Pfizer ",
         "status": " 1 ",
         "when": " 16 July 2021 "
@@ -37,7 +37,7 @@
         "Surname": "Otake",
         "age": " 24 ",
         "home town": " Handa ",
-        "Vaccine": " [ ]  ",
+        "Vaccine": 104  ,
         "Vaccine name": " Novavax ",
         "status": " 1 ",
         "when": " 17 July 2021 "
@@ -47,7 +47,7 @@
         "Surname": "Naonobu",
         "age": " 25 ",
         "home town": " Okazaki ",
-        "Vaccine": " [ ]  ",
+        "Vaccine": 100  ,
         "Vaccine name": "  Pfizer ",
         "status": " 2 ",
         "when": " 12 July 2021 "
@@ -57,7 +57,7 @@
         "Surname": "Fukuzawa",
         "age": " 28 ",
         "home town": "Tsushima",
-        "Vaccine": " [ ]  ",
+        "Vaccine": 104  ,
         "Vaccine name": " Novavax ",
         "status": " 1 ",
         "when": " 12 July 2021 "
@@ -67,7 +67,7 @@
         "Surname": "Yamauchi",
         "age": " 25 ",
         "home town": " Okazaki ",
-        "Vaccine": " [ ]  ",
+        "Vaccine": 100 ,
         "Vaccine name": " Pfizer ",
         "status": " 1 ",
         "when": " 10 July 2021 "
@@ -77,7 +77,7 @@
         "Surname": "Tsuiki",
         "age": " 22 ",
         "home town": " Seto ",
-        "Vaccine": " [ ]  ",
+        "Vaccine":  104 ,
         "Vaccine name": " Novavax ",
         "status": " 1 ",
         "when": " 12 May 2021 "
@@ -87,7 +87,7 @@
         "Surname": "Koga",
         "age": " 18 ",
         "home town": " Toyokawa ",
-        "Vaccine": " [ ]  ",
+        "Vaccine":  105,
         "Vaccine name": "  Sinopham ",
         "status": " 2 ",
         "when": " 12 June  2021 "
@@ -97,7 +97,7 @@
         "Surname": "Ri",
         "age": " 18 ",
         "home town": " Ichinomiya ",
-        "Vaccine": " [ ]  ",
+        "Vaccine":  103 ,
         "Vaccine name": " Johnson & Johnson ",
         "status": " 1 ",
         "when": " 10 July 2021 "
@@ -107,7 +107,7 @@
         "Surname": "Fushimi",
         "age": " 29 ",
         "home town": " Nagoya ",
-        "Vaccine": " [ ]  ",
+        "Vaccine": 102,
         "Vaccine name": " Moderna ",
         "status": " 2 ",
         "when": " 9 July 2021 "
@@ -117,7 +117,7 @@
         "Surname": "Sekita",
         "age": " 28 ",
         "home town": " Hekinan ",
-        "Vaccine": " [ ]  ",
+        "Vaccine": 103 ,
         "Vaccine name": " Johnson & Johnson ",
         "status": " 1 ",
         "when": " 12 June  2021 "
@@ -127,7 +127,7 @@
         "Surname": "Ishikawa",
         "age": " 21 ",
         "home town": " Kasugai ",
-        "Vaccine": " [ ]  ",
+        "Vaccine":  105,
         "Vaccine name": " Sinopham ",
         "status": " 1 ",
         "when": " 12 May 2021 "
@@ -137,7 +137,7 @@
         "Surname": "Asano",
         "age": " 22 ",
         "home town": " Okazaki ",
-        "Vaccine": " [ ]  ",
+        "Vaccine": 104,
         "Vaccine name": " Novavax ",
         "status": " 2 ",
         "when": " 19 July 2021 "
@@ -147,7 +147,7 @@
         "Surname": "Onodera",
         "age": " 21 ",
         "home town": " Hekinan ",
-        "Vaccine": " [ ]  ",
+        "Vaccine": 100,
         "Vaccine name": " Pfizer ",
         "status": " 1 ",
         "when": " 16 July 2021 "
@@ -157,9 +157,9 @@
         "Surname": "Rodchai",
         "age": " 19 ",
         "home town": " Seto ",
-        "Vaccine": " [ ]  ",
+        "Vaccine": "102",
         "Vaccine name": " Moderna ",
-        "status": " 1 ",
+        "status":  102 ,
         "when": " 19 July 2021 "
       },  {
         "id": 123,
@@ -167,7 +167,7 @@
         "Surname": "Boonmapa",
         "age": " 19 ",
         "home town": " Okazaki ",
-        "Vaccine": " [ ]  ",
+        "Vaccine": 104,
         "Vaccine name": " Novavax ",
         "status": " 1 ",
         "when": " 19 July 2021 "
