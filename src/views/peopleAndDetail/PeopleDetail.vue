@@ -1,5 +1,5 @@
 <template>
-  <p>Name: {{people.name}} Surname: {{people.Surname}} </p>
+  <p>Name: {{people.name}} <br> Surname: {{people.Surname}} </p>
   <p>Age : {{people.age}}</p>
   <p>Home Town : {{people.hometown}}</p>
 
