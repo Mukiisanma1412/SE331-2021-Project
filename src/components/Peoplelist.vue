@@ -4,7 +4,7 @@
     <td>{{ people.Surname }}</td>
     <td>{{ people.status }}</td>
     <td>
-      <router-link :to="{ name: 'PeopleLayout', params: { id: people.id } }">
+      <router-link :to="{ name: 'PeopleDetail', params: { id: people.id } }">
         >>
       </router-link>
     </td>
