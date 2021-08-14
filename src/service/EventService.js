@@ -15,5 +15,8 @@ export default {
   },
   getPeopleDetail(id) {
     return apiClient.get('/people/' + id)
+  },
+  getVaccineDetail(id) {
+    return apiClient.get('/vaccine/' + id)
   }
 }
