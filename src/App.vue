@@ -1,9 +1,18 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Icons"
+    rel="stylesheet"
+  />
+
   <div class="container">
+    <nav class="navbar navbar-light bg-light">
+      
+      <router-link to="/" class="navbar-brand"
+        >Home</router-link
+      >
+    </nav>
+  </div>
+  <div class="container" id="content">
     <router-view />
   </div>
 </template>
@@ -17,16 +26,4 @@
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>

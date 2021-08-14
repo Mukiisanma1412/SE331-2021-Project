@@ -1,15 +1,16 @@
 <template>
   <div class="home">
+    <h1 class="display-6"> List of vaccinated people</h1>
+    <hr>
     <div class="row">
       <div class="col"></div>
       <div class="col-8">
         <table class="table table-hover">
           <thead>
             <tr>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Status</th>
-              <th scope="col"></th>
+              <th colspan="8" scope="col">Name and Surname</th>
+              <th scope="col">Status(dose(s))</th>
+              <th scope="col">Detail</th>
             </tr>
           </thead>
           <tbody>
@@ -91,12 +92,14 @@ export default {
   },
   computed: {
     hasNextPage() {
-      let totalPages = Math.ceil(this.totalEvents / 10)
+      let totalPages = Math.ceil(this.totalEvents / 8)
       return this.page < totalPages
     }
   }
 };
 </script>
-<style scoped>
- 
+<style>
+ .home {
+   margin-top: 10px;
+ }
 </style>

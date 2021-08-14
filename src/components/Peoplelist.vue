@@ -1,11 +1,14 @@
 <template>
+
   <tr>
-    <td>{{ people.name }}</td>
-    <td>{{ people.Surname }}</td>
+    <td colspan="8">{{ people.name }}  {{ people.Surname }}</td>
     <td>{{ people.status }}</td>
     <td>
       <router-link :to="{ name: 'PeopleDetail', params: { id: people.id } }">
-        >>
+      <span class="material-icons">
+trending_flat
+</span>
+
       </router-link>
     </td>
   </tr>
