@@ -20,7 +20,10 @@
             >
           </li>
           <li class="page-item">
-            <router-link class="page-link" id="page-next" :to="{}"
+            <router-link
+              class="page-link"
+              id="page-next"
+              :to="{ name: 'VaccineDetail' }"
               >Vaccine's detail</router-link
             >
           </li>
@@ -43,12 +46,14 @@ export default {
   data() {
     return {
       people: null,
+    
     };
   },
   created() {
     EventService.getPeopleDetail(this.id)
       .then((response) => {
         this.people = response.data;
+        
       })
       .catch((error) => {
         console.log(error);

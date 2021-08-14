@@ -3,6 +3,7 @@ import Home from "../views/Home.vue";
 import PeopleLayout from "../views/PeopleLayout.vue"
 import PeopleDetail from "../views/peopleAndDetail/PeopleDetail.vue";
 import DoctorComment from "../views/peopleAndDetail/DoctorComment.vue"
+import VaccineDetail from "../views/peopleAndDetail/VaccineDetail.vue"
 
 const routes = [
   {
@@ -35,6 +36,11 @@ const routes = [
         path: 'comment',
         name: 'DoctorComment',
         component: DoctorComment
+      },
+      {
+        path: 'vaccine',
+        name: 'VaccineDetail',
+        component: VaccineDetail
       },
     ]
   },
