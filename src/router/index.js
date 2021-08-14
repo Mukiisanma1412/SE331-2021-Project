@@ -27,7 +27,7 @@ const routes = [
     component: PeopleLayout,
     children: [
       {
-        path: 'ppdetial',
+        path: '',
         name: 'PeopleDetail',
         component: PeopleDetail
       },

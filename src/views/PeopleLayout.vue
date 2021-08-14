@@ -7,7 +7,7 @@
           <router-link
             class="page-link"
             id="page-prev"
-            :to="{  name: 'PeopleDetail' }"
+            :to="{ PeopleDetail }"
          
             >{{ people.name}}'s detail</router-link
           >
@@ -16,7 +16,7 @@
           <router-link
             class="page-link"
             id="page-prev"
-            :to="{ name: 'DoctorComment' }"
+            :to="{ DoctorComment }"
        
             >Doctor's recommandation</router-link
           >
