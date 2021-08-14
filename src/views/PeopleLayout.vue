@@ -2,7 +2,7 @@
   <div v-if="people">
   
     <div id="nav-nest">
-      <ul class="pagination">
+      <ul class="pagination justify-content-center">
         <li class="page-item">
           <router-link
             class="page-link"

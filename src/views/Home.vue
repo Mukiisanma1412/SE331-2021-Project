@@ -25,8 +25,9 @@
       <div class="col"></div>
     </div>
     <div class="row">
+      <div class="col-3"></div>
       <div class="col">
-        <ul class="pagination">
+        <ul class="pagination justify-content-center">
           <li class="page-item">
             <router-link
               class="page-link"
@@ -49,6 +50,7 @@
           </li>
         </ul>
       </div>
+       <div class="col-3"></div>
     </div>
   </div>
 </template>
@@ -95,3 +97,6 @@ export default {
   }
 };
 </script>
+<style scoped>
+ 
+</style>
