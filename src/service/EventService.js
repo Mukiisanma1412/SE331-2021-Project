@@ -11,9 +11,12 @@ const apiClient = axios.create({
 
 export default {
   getPeoplelList(page) {
-    return apiClient.get('/people?_limit=10&_page=' + page)
+    return apiClient.get('/people?_limit=8&_page=' + page)
   },
   getPeopleDetail(id) {
     return apiClient.get('/people/' + id)
+  },
+  getVaccineDetail(id) {
+    return apiClient.get('/vaccine/' + id)
   }
 }
