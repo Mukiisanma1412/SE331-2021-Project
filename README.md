@@ -2,6 +2,8 @@
 Member 
 * 622115009 Thitinat Boonmapa
 * 622115041 Supatsara Rodchay
+Link
+* [link to web](https://se331-2021-project-f7e35.web.app/people/123/comment)
 
 ## Project setup
 ```
