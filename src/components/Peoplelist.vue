@@ -5,7 +5,7 @@
     <td>{{ people.status }}</td>
     <td>
       <router-link :to="{ name: 'PeopleDetail', params: { id: people.id } }">
-      <span class="material-icons">
+      <span @click="detail" class="material-icons">
 trending_flat
 </span>
 
@@ -23,6 +23,20 @@ export default {
       required: true,
     },
   },
+  inject: ['GStore'],
+   methods: {
+    detail() {
+       this.GStore.flashMessage =
+       'You are in Information page ' 
+       setTimeout(() => {
+         this.GStore.flashMessage = ''
+       }, 3000)
+   this.$router.push({
+        name: 'PeopleDetail',
+       
+      })
+    }
+  }
 };
 </script>
 
