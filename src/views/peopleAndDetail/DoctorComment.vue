@@ -1,21 +1,58 @@
 <template>
-  <p>Doctor's comment on {{people.name}}'s vaccination' </p>
-  <form class="review-form" @submit.prevent="onSubmit">
-            <h3>Doctor review</h3>
-            <p><label for="name">Name:</label>
-            <input id="name" v-model="name"></p>
-            <p><label for="review">Review:</label>
-            <textarea id="review" v-model="review"></textarea></p>
-            
-            <input class="button" type="submit" value="Submit">
-        </form>
-        
+  <div class="card-body">
+  <h4>Doctor's comment on {{ people.name }}'s vaccination'</h4>
+
+   <ul>
+    <li v-for="Acomment in Comments" v-bind:key="Acomment.name">
+     <b> {{ Acomment.name }} </b> : " {{ Acomment.comment }} "
+    </li>
+  </ul>
+<hr>
+  <form>
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" v-model="name" />
+    </div>
+    <div class="mb-3">
+      <label for="comment" class="form-label">Example textarea</label>
+      <textarea
+        class="form-control"
+        id="comment"
+        rows="3"
+        v-model="comment"
+      ></textarea>
+    </div>
+    <button type="button" class="btn btn-outline-primary btn-sm" @click="submit">
+      Submit
+    </button>
+  </form>
+
+  <!-- {{ Comments}} -->
+
+ 
+
+</div>
 </template>
 
 <script>
-
 export default {
-  props: ['people'],
-  
-}
+  props: ["people", "Comments"],
+  data() {
+    return {
+      name: "",
+      comment: "",
+    };
+  },
+  methods: {
+    submit() {
+      let newComment = {
+        name: this.name,
+        comment: this.comment,
+      };
+      this.$emit("comment", newComment);
+      this.name = ""
+      this.comment = ""
+    },
+  },
+};
 </script>
