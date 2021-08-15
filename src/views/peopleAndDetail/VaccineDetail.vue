@@ -22,19 +22,27 @@
 import EventService from "@/service/EventService.js";
 
 export default {
-  props: ["people"],
+  props: ["Vid"],
   data() {
     return {
       Vaccine: null,
     };
   },
   created() {
-    EventService.getVaccineDetail(this.people.Vaccine)
+    EventService.getVaccineDetail(this.Vid)
       .then((response) => {
         this.Vaccine = response.data;
       })
       .catch((error) => {
-        console.log(error);
+        if (error.response && error.response.status == 404) {
+          this.$router.push({
+            name: 'NotFound'
+          })
+        } else {
+          this.$router.push({
+            name: 'NetworkError'
+          })
+        }
       });
   },
 };

@@ -5,6 +5,8 @@ import PeopleLayout from "../views/PeopleLayout.vue"
 import PeopleDetail from "../views/peopleAndDetail/PeopleDetail.vue";
 import DoctorComment from "../views/peopleAndDetail/DoctorComment.vue"
 import VaccineDetail from "../views/peopleAndDetail/VaccineDetail.vue"
+import NotFound from "../views/NotFound.vue"
+import NetworkError from "../views/NetworkError.vue"
 
 const routes = [
   {
@@ -39,12 +41,23 @@ const routes = [
         component: DoctorComment
       },
       {
-        path: 'vaccine',
+        path: 'vaccine/:Vid',
         name: 'VaccineDetail',
-        component: VaccineDetail
+        component: VaccineDetail,
+        props: true,
       },
     ]
   },
+  {
+    path: '/404',
+    name: 'NotFound',
+    component: NotFound
+  }, 
+  {
+    path: '/networkError',
+    name: 'NetworkError',
+    component: NetworkError
+  }, 
 ];
 
 const router = createRouter({
