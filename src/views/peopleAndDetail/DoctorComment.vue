@@ -1,6 +1,13 @@
 <template>
-  <p>Doctor's comment on {{ people.name }}'s vaccination'</p>
+  <div class="card-body">
+  <h4>Doctor's comment on {{ people.name }}'s vaccination'</h4>
 
+   <ul>
+    <li v-for="Acomment in Comments" v-bind:key="Acomment.name">
+     <b> {{ Acomment.name }} </b> : " {{ Acomment.comment }} "
+    </li>
+  </ul>
+<hr>
   <form>
     <div class="mb-3">
       <label for="name" class="form-label">Name</label>
@@ -15,18 +22,16 @@
         v-model="comment"
       ></textarea>
     </div>
-    <button type="button" class="btn btn-primary" @click="submit">
+    <button type="button" class="btn btn-outline-primary btn-sm" @click="submit">
       Submit
     </button>
   </form>
 
   <!-- {{ Comments}} -->
 
-  <ul>
-    <li v-for="Acomment in Comments" v-bind:key="Acomment.name">
-      {{ Acomment.name }} : {{ Acomment.comment }}
-    </li>
-  </ul>
+ 
+
+</div>
 </template>
 
 <script>
