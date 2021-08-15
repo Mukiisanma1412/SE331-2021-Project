@@ -23,7 +23,7 @@
             <router-link
               class="page-link"
               id="page-next"
-              :to="{ name: 'VaccineDetail', params: {Vid:people.Vaccine } }"
+              :to="{ name: 'VaccineDetail', params: {Vid:people.Vaccine } } "
               >Vaccine's detail</router-link
             >
           </li>
@@ -31,7 +31,7 @@
       </div>
 
       <div id="card" class="card mb-3" style="max-width: 900px">
-        <router-view :people="people" />
+        <router-view :people="people" :Comments="Comments" @comment="addComment" />
       </div>
     </div>
   </div>
@@ -45,6 +45,7 @@ export default {
   data() {
     return {
       people: null,
+      Comments: []
     };
   },
   created() {
@@ -64,6 +65,11 @@ export default {
         }
       });
   },
+  methods:{
+    addComment(comment){
+      this.Comments.push(comment)
+    }
+  }
 };
 </script>
 
