@@ -1,6 +1,6 @@
 <template>
   <div class="card-body">
-  <h4>Doctor's comment on {{ people.name }}'s vaccination'</h4>
+  <h4>Doctor's comments on {{ people.name }}'s vaccination'</h4>
 
    <ul>
     <li v-for="Acomment in Comments" v-bind:key="Acomment.name">
@@ -14,7 +14,7 @@
       <input type="text" class="form-control" id="name" v-model="name" />
     </div>
     <div class="mb-3">
-      <label for="comment" class="form-label">Example textarea</label>
+      <label for="comment" class="form-label">Comment</label>
       <textarea
         class="form-control"
         id="comment"

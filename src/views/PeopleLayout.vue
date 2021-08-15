@@ -14,9 +14,15 @@
           <li class="page-item">
             <router-link @click="doctor"
               class="page-link"
+
               id="page-prev" 
               :to="{ name: 'DoctorComment' }" 
               >Doctor's recommandation</router-link
+
+              id="page-prev"
+              :to="{ name: 'DoctorComment' }"
+              >Doctor's recommendation</router-link
+
             >
           </li>
           <li class="page-item">
