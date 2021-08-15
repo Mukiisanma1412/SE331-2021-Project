@@ -29,10 +29,9 @@
           </li>
         </ul>
       </div>
-      <div class="card">
-        <div class="card-body">
-          <router-view :people="people" />
-        </div>
+
+      <div id="card" class="card mb-3" style="max-width: 900px">
+        <router-view :people="people" />
       </div>
     </div>
   </div>
@@ -46,14 +45,12 @@ export default {
   data() {
     return {
       people: null,
-    
     };
   },
   created() {
     EventService.getPeopleDetail(this.id)
       .then((response) => {
         this.people = response.data;
-        
       })
       .catch((error) => {
         console.log(error);
@@ -65,5 +62,9 @@ export default {
 <style scoped>
 #layout {
   margin-top: 10px;
+}
+
+#card {
+  margin: 0 auto;
 }
 </style>

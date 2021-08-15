@@ -1,18 +1,31 @@
 <template>
-  <p>Name: {{ Vaccine.name}}</p>
-  <p>Detail: {{ Vaccine.detail}}</p>
-  <p>Country: {{ Vaccine.Country}}</p>
-
+  <div class="card-body">
+    <h2 class="card-title">{{ Vaccine.name }}</h2>
+    <hr />
+    <div class="row">
+      <div class="col"><b>Detail </b>:</div>
+      <div class="col-10">
+        <p class="card-text">{{ Vaccine.detail }}</p>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col"><b>Country</b> :</div>
+      <div class="col-10">
+        <p class="card-text">{{ Vaccine.Country }}</p>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 import EventService from "@/service/EventService.js";
 
 export default {
-  props: ['people'],
+  props: ["people"],
   data() {
     return {
-      Vaccine: null
+      Vaccine: null,
     };
   },
   created() {
@@ -24,5 +37,5 @@ export default {
         console.log(error);
       });
   },
-}
+};
 </script>
