@@ -4,7 +4,7 @@
       <div id="nav-nest">
         <ul class="pagination justify-content-center">
           <li class="page-item">
-            <router-link
+            <router-link @click="detail"
               class="page-link"
               id="page-prev"
               :to="{ name: 'PeopleDetail' }"
@@ -12,15 +12,15 @@
             >
           </li>
           <li class="page-item">
-            <router-link
+            <router-link @click="doctor"
               class="page-link"
-              id="page-prev"
-              :to="{ name: 'DoctorComment' }"
+              id="page-prev" 
+              :to="{ name: 'DoctorComment' }" 
               >Doctor's recommandation</router-link
             >
           </li>
           <li class="page-item">
-            <router-link
+            <router-link @click="vaccines"
               class="page-link"
               id="page-next"
               :to="{ name: 'VaccineDetail', params: {Vid:people.Vaccine } } "
@@ -42,6 +42,7 @@ import EventService from "@/service/EventService.js";
 
 export default {
   props: ["id"],
+  inject: ['GStore'],
   data() {
     return {
       people: null,
@@ -68,6 +69,39 @@ export default {
   methods:{
     addComment(comment){
       this.Comments.push(comment)
+    },
+      doctor() {
+       this.GStore.flashMessage =
+       'You are in Doctor Comment page ' 
+       setTimeout(() => {
+         this.GStore.flashMessage = ''
+       }, 3000)
+   this.$router.push({
+        name: 'DoctorComment',
+       
+      })
+    },
+    vaccines() {
+       this.GStore.flashMessage =
+       'You are in Vaccine Detail page ' 
+       setTimeout(() => {
+         this.GStore.flashMessage = ''
+       }, 3000)
+   this.$router.push({
+        name: 'VaccineDetail',
+       
+      })
+    },
+     detail() {
+       this.GStore.flashMessage =
+       'You are in Information page ' 
+       setTimeout(() => {
+         this.GStore.flashMessage = ''
+       }, 3000)
+   this.$router.push({
+        name: 'VaccineDetail',
+       
+      })
     }
   }
 };
