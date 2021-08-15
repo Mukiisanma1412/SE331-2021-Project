@@ -6,22 +6,54 @@
       </div>
       <div class="col-md-8">
         <div class="card-body">
-        
           <h4 class="card-title">{{ people.name }} {{ people.Surname }}</h4>
-          <hr>
-          
-          <p class="card-text">Age : {{ people.age }}</p>
-          <p class="card-text">Home Town : {{ people.hometown }}</p>
-          <p class="card-text">Vaccine : {{ people.Vaccinename }}</p>
-          <p class="card-text">
-            Status :
-            <span v-if="people.status === ' 1 '">1 dose</span>
-            <span v-else
-              >2 doses <span class="material-icons"> check_circle </span></span
-            >
-          </p>
-          <p class="card-text">Latest vaccinated : {{ people.when }}</p>
-          
+          <hr />
+          <div class="container">
+            <div class="row">
+              <div class="col"><h6 class="card-text">Age :</h6></div>
+
+              <div class="col-8">
+                <p class="card-text">
+                {{ people.age }}</p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">Home Town :</div>
+
+              <div class="col-8">
+                {{ people.hometown }}
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">Vaccine :</div>
+
+              <div class="col-8">
+                {{ people.Vaccinename }}
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">Status :</div>
+
+              <div class="col-8"> {{people.status}}
+                <span v-if="people.status === ' 1 '"> dose</span>
+                <span v-else
+                  > doses
+                  <span class="material-icons"> check_circle </span></span
+                >
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">Latest vaccinated :</div>
+
+              <div class="col-8">
+                {{ people.when }}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
