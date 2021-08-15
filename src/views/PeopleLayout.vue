@@ -23,7 +23,7 @@
             <router-link
               class="page-link"
               id="page-next"
-              :to="{ name: 'VaccineDetail' }"
+              :to="{ name: 'VaccineDetail', params: {Vid:people.Vaccine } }"
               >Vaccine's detail</router-link
             >
           </li>

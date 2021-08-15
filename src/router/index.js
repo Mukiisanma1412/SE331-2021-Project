@@ -41,9 +41,10 @@ const routes = [
         component: DoctorComment
       },
       {
-        path: 'vaccine',
+        path: 'vaccine/:Vid',
         name: 'VaccineDetail',
-        component: VaccineDetail
+        component: VaccineDetail,
+        props: true,
       },
     ]
   },
