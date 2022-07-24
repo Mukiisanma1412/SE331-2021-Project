@@ -8,7 +8,7 @@
   />
 
   <div class="container">
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light" style="background-color: #73A062;">
       <router-link to="/" class="navbar-brand">Home</router-link>
     </nav>
   </div>

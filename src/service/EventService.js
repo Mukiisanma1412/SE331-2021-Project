@@ -10,13 +10,21 @@ const apiClient = axios.create({
 })
 
 export default {
-  getPeoplelList(page) {
-    return apiClient.get('/people?_limit=8&_page=' + page)
+  getEventLists(perPage, page) {
+      return apiClient.get('/drugs?_limit=' + perPage + '&_page=' + page);
   },
-  getPeopleDetail(id) {
-    return apiClient.get('/people/' + id)
+  getEvent(id) {
+      return apiClient.get('/drugs/' + id);
   },
-  getVaccineDetail(id) {
-    return apiClient.get('/vaccine/' + id)
-  }
-}
+  addEvent(info) {
+      return apiClient.post('/drugs', {
+          name: info.name,
+          Description: info.description,
+          ShortDesc: info.shortDesc,
+          HowToTake: info.howToTake
+      });
+  },
+  // delete(id) {
+  //     return apiClient.get("/drugs/" + id);
+  // },
+};

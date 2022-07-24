@@ -7,6 +7,7 @@ import DoctorComment from "../views/peopleAndDetail/DoctorComment.vue"
 import VaccineDetail from "../views/peopleAndDetail/VaccineDetail.vue"
 import NotFound from "../views/NotFound.vue"
 import NetworkError from "../views/NetworkError.vue"
+import DrugDetail from "../views/DrugDetail.vue"
 
 const routes = [
   {
@@ -24,6 +25,7 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
+ 
   {
     path: '/people/:id',
     name: 'PeopleLayout',
@@ -49,6 +51,11 @@ const routes = [
     ]
   },
   {
+    path: '/DrugDetail',
+    name: 'DrugDetail',
+    component: DrugDetail
+  },
+  {
     path: '/404',
     name: 'NotFound',
     component: NotFound
@@ -58,6 +65,7 @@ const routes = [
     name: 'NetworkError',
     component: NetworkError
   }, 
+ 
 ];
 
 const router = createRouter({

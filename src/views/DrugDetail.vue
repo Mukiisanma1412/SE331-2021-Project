@@ -1,370 +1,71 @@
 <template>
-    <div class="hello">
-        <h1 class="display-6"> Medicine List</h1>
-    </div>
+  <div class="hello">
+    <h1 class="display-6">Medicine List</h1>
+  
+  </div>
 
-<div class="medicine">
-    <tr>
-        <td>
-             <v-card class="mx-auto" max-width="344" >
-            <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="200px"></v-img>
+  
+  <div v-for="drug in drugs" :key="drug">
 
-            <v-card-title>Top western road trips </v-card-title>
+                      <h2>Name: {{ drug.name }}</h2>
 
-             <v-card-subtitle> 1,000 miles of wonder</v-card-subtitle>
+                     <h1>Description: {{ drug.description }}</h1>
 
-            <v-card-actions>
-             <v-btn color="orange lighten-2" text > Explore</v-btn>
+                     <h1>Short Description: {{ drug.shortDesc }}</h1>
 
-     <v-spacer></v-spacer>
-
-      <v-btn
-        icon
-        @click="show = !show"
-      >
-        <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-      </v-btn>
-    </v-card-actions>
-
-    <v-expand-transition>
-      <div v-show="show">
-        <v-divider></v-divider>
-
-        <v-card-text>
-          I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
-        </v-card-text>
-      </div>
-    </v-expand-transition>
-  </v-card>
-        </td>
-
-
-        <td>
-            <v-card
-    class="mx-auto"
-    max-width="344"
-  >
-    <v-img
-      src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-      height="200px"
-    ></v-img>
-
-    <v-card-title>
-      Top western road trips
-    </v-card-title>
-
-    <v-card-subtitle>
-      1,000 miles of wonder
-    </v-card-subtitle>
-
-    <v-card-actions>
-      <v-btn
-        color="orange lighten-2"
-        text
-      >
-        Explore
-      </v-btn>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        icon
-        @click="show = !show"
-      >
-        <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-      </v-btn>
-    </v-card-actions>
-
-    <v-expand-transition>
-      <div v-show="show">
-        <v-divider></v-divider>
-
-        <v-card-text>
-          I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
-        </v-card-text>
-      </div>
-    </v-expand-transition>
-    </v-card>
-        </td>
-
-        <td>
-                  <v-card class="mx-auto" max-width="344" >
-            <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="200px"></v-img>
-
-            <v-card-title>Top western road trips </v-card-title>
-
-             <v-card-subtitle> 1,000 miles of wonder</v-card-subtitle>
-
-            <v-card-actions>
-             <v-btn color="orange lighten-2" text > Explore</v-btn>
-
-     <v-spacer></v-spacer>
-
-      <v-btn
-        icon
-        @click="show = !show"
-      >
-        <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-      </v-btn>
-    </v-card-actions>
-
-    <v-expand-transition>
-      <div v-show="show">
-        <v-divider></v-divider>
-
-        <v-card-text>
-          I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
-        </v-card-text>
-      </div>
-    </v-expand-transition>
-  </v-card>
-        </td>
-
-
-        <td>
-            <v-card
-    class="mx-auto"
-    max-width="344"
-  >
-    <v-img
-      src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-      height="200px"
-    ></v-img>
-
-    <v-card-title>
-      Top western road trips
-    </v-card-title>
-
-    <v-card-subtitle>
-      1,000 miles of wonder
-    </v-card-subtitle>
-
-    <v-card-actions>
-      <v-btn
-        color="orange lighten-2"
-        text
-      >
-        Explore
-      </v-btn>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        icon
-        @click="show = !show"
-      >
-        <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-      </v-btn>
-    </v-card-actions>
-
-    <v-expand-transition>
-      <div v-show="show">
-        <v-divider></v-divider>
-
-        <v-card-text>
-          I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
-        </v-card-text>
-      </div>
-    </v-expand-transition>
-    </v-card>
-        </td>
-
-    </tr>
-
-    <br>
-
-    <tr>
-        <td>
-            <v-card
-    class="mx-auto"
-    max-width="344"
-  >
-    <v-img
-      src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-      height="200px"
-    ></v-img>
-
-    <v-card-title>
-      Top western road trips
-    </v-card-title>
-
-    <v-card-subtitle>
-      1,000 miles of wonder
-    </v-card-subtitle>
-
-    <v-card-actions>
-      <v-btn
-        color="orange lighten-2"
-        text
-      >
-        Explore
-      </v-btn>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        icon
-        @click="show = !show"
-      >
-        <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-      </v-btn>
-    </v-card-actions>
-
-    <v-expand-transition>
-      <div v-show="show">
-        <v-divider></v-divider>
-
-        <v-card-text>
-          I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
-        </v-card-text>
-      </div>
-    </v-expand-transition>
-  </v-card>
-        </td>
-
-        <td>
-            <v-card
-    class="mx-auto"
-    max-width="344"
-  >
-    <v-img
-      src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-      height="200px"
-    ></v-img>
-
-    <v-card-title>
-      Top western road trips
-    </v-card-title>
-
-    <v-card-subtitle>
-      1,000 miles of wonder
-    </v-card-subtitle>
-
-    <v-card-actions>
-      <v-btn
-        color="orange lighten-2"
-        text
-      >
-        Explore
-      </v-btn>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        icon
-        @click="show = !show"
-      >
-        <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-      </v-btn>
-    </v-card-actions>
-
-    <v-expand-transition>
-      <div v-show="show">
-        <v-divider></v-divider>
-
-        <v-card-text>
-          I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
-        </v-card-text>
-      </div>
-    </v-expand-transition>
-  </v-card>
-        </td>
-    </tr>
-
-    <tr>
-        <td>
-        <v-card class="mx-auto" max-width="344" >
-            <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="200px"></v-img>
-
-            <v-card-title>Top western road trips </v-card-title>
-
-             <v-card-subtitle> 1,000 miles of wonder</v-card-subtitle>
-
-            <v-card-actions>
-             <v-btn color="orange lighten-2" text > Explore</v-btn>
-
-     <v-spacer></v-spacer>
-
-      <v-btn
-        icon
-        @click="show = !show"
-      >
-        <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-      </v-btn>
-    </v-card-actions>
-
-    <v-expand-transition>
-      <div v-show="show">
-        <v-divider></v-divider>
-
-        <v-card-text>
-          I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
-        </v-card-text>
-      </div>
-    </v-expand-transition>
-  </v-card>
-        </td>
-
-
-        <td>
-            <v-card
-    class="mx-auto"
-    max-width="344"
-  >
-    <v-img
-      src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-      height="200px"
-    ></v-img>
-
-    <v-card-title>
-      Top western road trips
-    </v-card-title>
-
-    <v-card-subtitle>
-      1,000 miles of wonder
-    </v-card-subtitle>
-
-    <v-card-actions>
-      <v-btn
-        color="orange lighten-2"
-        text
-      >
-        Explore
-      </v-btn>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        icon
-        @click="show = !show"
-      >
-        <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-      </v-btn>
-    </v-card-actions>
-
-    <v-expand-transition>
-      <div v-show="show">
-        <v-divider></v-divider>
-
-        <v-card-text>
-          I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
-        </v-card-text>
-      </div>
-    </v-expand-transition>
-    </v-card>
-        </td>
-    </tr>
-
-
-
+                     <h1>How to Take: {{ drug.howToTake }}</h1>
 </div>
+
+ 
+   
+ 
+  
+
   
 </template>
 
 <script>
-  export default {
-    data: () => ({
-      show: false,
-    }),
-  }
+
+import EventService from "@/service/EventService.js";
+import { watchEffect } from '@vue/runtime-core'
+// import * as yup from 'yup'
+// import ROUTE_PATH from '@/constants/router.js'
+
+export default {
+  name: 'DrugDetail',
+  props: {
+    page: {
+      type: Number,
+      required: true
+    }
+  },
+  data (){
+    return {
+      drugs: [{
+        name: ''
+      }, {
+        description: ''
+      }, {
+        shortDesc: ''
+      }, {
+        howToTake: ''
+      }],
+      totalEvents: 0,
+    }},
+  created() {
+      watchEffect(() => {
+        EventService.getEventLists(6, 1)
+          .then((response) => {
+            console.log(response)
+            this.drugs = response.data
+            this.totalEvents = response.headers['x-total-count']
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      })
+  },
+};
 </script>
+
+
