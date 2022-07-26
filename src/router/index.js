@@ -8,6 +8,10 @@ import VaccineDetail from "../views/peopleAndDetail/VaccineDetail.vue"
 import NotFound from "../views/NotFound.vue"
 import NetworkError from "../views/NetworkError.vue"
 import DrugDetail from "../views/DrugDetail.vue"
+import MoreDetail from "../views/MoreDetail.vue"
+import AddDrug from "../views/AddDrug.vue"
+
+
 
 const routes = [
   {
@@ -55,6 +59,17 @@ const routes = [
     name: 'DrugDetail',
     component: DrugDetail
   },
+  {
+    path: '/MoreDetail',
+    name: 'MoreDetail',
+    component: MoreDetail
+  },
+  {
+    path: '/AddDrug',
+    name: 'AddDrug',
+    component: AddDrug
+  },
+
   {
     path: '/404',
     name: 'NotFound',
