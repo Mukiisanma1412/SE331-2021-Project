@@ -4,28 +4,39 @@
     <h1 class="display-6" style=" color: #626262; text-align:center; margin: 0.5cm;" >Drug List</h1>
   </div>
   <div class="container" style="text-align:right; ">
-     <button class="button1"  style=" margin-bottom: 0.5cm;">Add new drug</button>
+     <button class="button1">Add new drug</button>
     
   </div>
  
  <!-- การ์ดยา -->
 <div class="druglist">
 
-  <div class="row">
-  <div class="column">
-    <div class="card">
-       <div class="drugid" v-for="drug in drugs" :key="drug">
+  <!-- <div class="row"> -->
+  <!-- <div class="column"> -->
+    <!-- <div class="card"> -->
+      <div class="drugid" v-for="drug in drugs" :key="drug">
 
-          <h2>Name: {{ drug.name }}</h2>
+      <div class="column">
+      <div class="card">
+        <div id="app">
+        <img src="@/assets/addimage.png" alt="">
+        </div>
+        <!-- <h2>ID: {{ drug.id }}</h2> -->
+        <h2>Name: {{ drug.name }}</h2>
+        <!-- <h5>Description: {{ drug.description }}</h5>
+        <h5>Short Description: {{ drug.shortDesc }}</h5>
+        <h5>Hor To Take: {{ drug.howToTake }}</h5> -->
+      <!-- <button class="button">Detail</button> -->
+    <button class="button" @click="gotoMoreDetail(drug.id)" >Detail</button>
+    <!-- </div> -->
+  <!-- </div> -->
 
-         
-
-        </div> 
-      <button class="button">Detail</button>
+        <!-- </div>  -->
+      <!-- <button class="button">Detail</button> -->
     </div>
   </div>
 
-  <div class="column">
+  <!-- <div class="column">
     <div class="card">
       <h3>Card 1</h3>
       <p>Some text</p>
@@ -50,7 +61,7 @@
       <p>Some text</p>
       <button class="button">Detail</button>
     </div>
-  </div>
+  </div> -->
 </div>
 </div>
 
@@ -82,7 +93,7 @@
 <script>
 
 import EventService from "@/service/EventService.js";
-import { watchEffect } from '@vue/runtime-core'
+import { watchEffect } from '@vue/runtime-core';
 // import * as yup from 'yup'
 // import ROUTE_PATH from '@/constants/router.js'
 
@@ -121,6 +132,18 @@ export default {
           })
       })
   },
+  methods:{
+    gotoMoreDetail(id){
+    console.log(id)
+   this.$router.push('/MoreDetail/'+id); 
+      },
+    
+  },
+  // methods:{
+  //  gotoaddDrug(){
+  // this.$router.push('/AddDrug');
+  //     }
+  // },
 };
 </script>
 

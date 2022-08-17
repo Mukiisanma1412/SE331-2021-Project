@@ -2,8 +2,10 @@
 <div class="hello">
         <h1 class="display-6" style=" color: #626262; text-align:center; margin: 0.5cm;" >Drug Detail</h1>
 </div>
+      <button class="button3"  @click="goToDrugDetail()" >Back</button>
       <div class="container" style="text-align:right; ">
         <button class="button2"  style=" margin-bottom: 0.5cm;">Add new drug</button>
+        <!-- <button class="button2"  style=" margin-left:26cm;">Add new drug</button> -->
       </div>
      
      <!-- การ์ดยา -->
@@ -17,17 +19,17 @@
              <button class="button1" >Edit</button>
             </div>
            
-              <h1>Name: </h1>
-              <h2>Shot Description:<h4>hello</h4></h2>
-              <h2>Description:<h4>hello</h4></h2>
-              <h2>How to take:<h4>hello</h4></h2>
+              <h1>Name: {{ drug.name }}</h1>
+              <h2>Shot Description:<h4>{{ drug.shortDesc }}</h4></h2>
+              <h2>Description:<h4>{{ drug.description }}</h4></h2>
+              <h2>How to take:<h4>{{ drug.howToTake }}</h4></h2>
   
             <button class="button" >Delete</button>
           </div>
         </div>
     
       </div>
-    </div>
+    </div>  
 </template>
 
 
@@ -35,45 +37,36 @@
 <script>
 
 import EventService from "@/service/EventService.js";
-import { watchEffect } from '@vue/runtime-core'
+// import { watchEffect } from '@vue/runtime-core'
 // import * as yup from 'yup'
 // import ROUTE_PATH from '@/constants/router.js'
 
 
 export default {
-  name: 'DrugDetail',
-  props: {
-    page: {
-      type: Number,
-      required: true
+  props: ['id'],
+  data() {
+    return {
+      drug: null
     }
   },
-  data (){
-    return {
-      drugs: [{
-        name: ''
-      }, {
-        description: ''
-      }, {
-        shortDesc: ''
-      }, {
-        howToTake: ''
-      }],
-      totalEvents: 0,
-    }},
   created() {
-      watchEffect(() => {
-        EventService.getEventLists(6, 1)
+      // watchEffect(() => {
+        EventService.getEvent(this.id)
           .then((response) => {
             console.log(response)
-            this.drugs = response.data
-            this.totalEvents = response.headers['x-total-count']
+            this.drug = response.data
+            // this.totalEvents = response.headers['x-total-count']
           })
           .catch((error) => {
             console.log(error)
           })
-      })
+      // })
   },
+  methods:{
+   goToDrugDetail(){
+   this.$router.push('/DrugDetail'); 
+      }
+  }
 };
 </script>
 
@@ -164,6 +157,18 @@ export default {
       border-radius: 8px;
       
     }
+    .button3 {
+        text-align: center;
+      background-color: rgb(103, 104, 103);
+      border:#2a2e2d;
+      color: rgb(243, 243, 243);
+      padding: 10px 10px;
+      width:7%;
+      cursor: pointer;
+      border-radius: 8px;
+      margin-left:cm;
+      
+    }
 
     .button:hover {
       background-color: #b64734;
@@ -171,6 +176,10 @@ export default {
 
     .button2:hover {
       background-color: #aace93;
+    }
+
+    .button3:hover {
+      background-color: #5c5c5c;
     }
 
     /* ตัวหนังสือ */
