@@ -6,28 +6,36 @@
     href="https://fonts.googleapis.com/css2?family=Material+Icons"
     rel="stylesheet"
   />
-<nav class="navbar navbar-light">
-      <router-link to="/" class="navbar-brand" style="font-size:20%; color: #EFECE8 ">Home</router-link>
-      <router-link to="/" class="navbar-brand" style="font-size:11%; color: #848685 ">Purchasing Detail</router-link>
-      <router-link to="/" class="navbar-brand" style="font-size:15%; color: #3b3a3a ">Log out</router-link>
-      <router-link to="/" class="navbar-brand" style="font-size:15%; color: #3b3a3a ">Log out</router-link>
-      <router-link to="/" class="navbar-brand" style="font-size:15%; color: #3b3a3a ">Log out</router-link>
-      <router-link to="/" class="navbar-brand" style="font-size:15%; color: #3b3a3a ">Log out</router-link>
-      <router-link to="/" class="navbar-brand" style="font-size:15%; color: #3b3a3a ">Log out</router-link>
-      <router-link to="/" class="navbar-brand" style="font-size:15%; color: #3b3a3a ">Log out</router-link>
-      <router-link to="/" class="navbar-brand" style="font-size:15%; color: #3b3a3a ">Log out</router-link>
-      <router-link to="/" class="navbar-brand" style="font-size:15%; color: #3b3a3a ">Log out</router-link>
-      <router-link to="/" class="navbar-brand" style="font-size:13%; color: #EFECE8 ">Log out</router-link>
-</nav>
-<div class="container">
-</div>
-<div class="container" id="content">
-<router-view />
-</div>
+  <div class="container">
+    <nav class="navbar navbar-light">
+      <router-link
+        to="/"
+        class="navbar-brand"
+        style="font-size: 20%; color: #efece8"
+        >Home</router-link
+      >
+      <router-link
+        to="/"
+        class="navbar-brand"
+        style="font-size: 11%; color: #848685"
+        >Purchasing Detail</router-link
+      >
+
+      <router-link
+        to="/"
+        class="navbar-brand"
+        style="font-size: 13%; color: #efece8"
+        >Log out</router-link
+      >
+    </nav>
+
+    <div class="container" id="content">
+      <router-view />
+    </div>
+  </div>
 </template>
 
 <script>
-
 export default {
   inject: ["GStore"], //<--
 };
@@ -43,7 +51,6 @@ export default {
   to {
     /* background: transparent; */
   }
-    
 }
 
 #flashMessage {
@@ -62,13 +69,10 @@ export default {
 </style>
 
 <style scoped>
-.navbar{
-    background: #3b3a3a;
-    padding: 0.01cm;
-    font-size:5cm;
-    border-bottom: 0.5px solid rgb(100, 96, 96);
-
-
+.navbar {
+  background: #3b3a3a;
+  padding: 0.01cm;
+  font-size: 5cm;
+  border-bottom: 0.5px solid rgb(100, 96, 96);
 }
-
 </style>

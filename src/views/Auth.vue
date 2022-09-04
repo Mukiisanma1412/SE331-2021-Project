@@ -1,131 +1,113 @@
 <template>
-    <div class="vue-tempalte">
-        <div class="hello">
-        <h3 class="display-6" style=" color: #626262; text-align:center; margin: 0.5cm;" >Log In</h3>
-</div>
-        <form>
-            
-            <div class="form-group">
-                <label>USERNAME</label>
-                <input type="email" class="form-control form-control-lg" />
-            </div>
-            <div class="form-group">
-                <label>PASSWORD</label>
-                <input type="password" class="form-control form-control-lg" />
-            </div>
-            <button type="submit" style="margin: 20px 20px;" class="btn btn-dark btn-lg btn-block">LogIn</button>
-        </form>
+  <div class="col-md-12">
+    <div class="card card-container">
+      <img
+        id="profile-img"
+        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+        class="profile-img-card"
+      />
+      <Form @submit="handleLogin" :validation-schema="schema">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <Field name="username" type="text" class="form-control" />
+          <ErrorMessage name="username" class="error-feedback" />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <Field name="password" type="password" class="form-control" />
+          <ErrorMessage name="password" class="error-feedback" />
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-primary btn-block" :disabled="loading">
+            <span
+              v-show="loading"
+              class="spinner-border spinner-border-sm"
+            ></span>
+            <span>Login</span>
+          </button>
+        </div>
+
+        <div class="form-group">
+          <div v-if="message" class="alert alert-danger" role="alert">
+            {{ message }}
+          </div>
+        </div>
+      </Form>
     </div>
+  </div>
 </template>
+
 <script>
-    export default {
-        data() {
-            return {}
-        }
+import { Form, Field, ErrorMessage } from "vee-validate";
+import * as yup from "yup";
+import AuthService from '@/service/AuthService.js'
+
+export default {
+  name: "Login",
+  components: {
+    Form,
+    Field,
+    ErrorMessage,
+  },
+  data() {
+    const schema = yup.object().shape({
+      username: yup.string().required("Username is required!"),
+      password: yup.string().required("Password is required!"),
+    });
+    return {
+      loading: false,
+      message: "",
+      schema,
+    };
+    },
+  methods:{
+    handleLogin(user){
+     
+      AuthService.login(user).then(() => {
+        this.$router.push({name:'Home'})
+      }) .catch(() => {
+        this.message = 'could not login'
+      })
+
+     
     }
+
+  },
+};
 </script>
 
 <style scoped>
-* {
-  box-sizing: border-box;
-}
-body {
-  background: #2554FF !important;
-  min-height: 100vh;
-  display: flex;
-  font-weight: 400;
-}
-body,
-html,
-.App,
-.vue-tempalte,
-.vertical-center {
-  width: 100%;
-  height: 100%;
-}
-.navbar-light {
-  background-color: #ffffff;
-  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
-}
-.vertical-center {
-  display: flex;
-  text-align: left;
-  justify-content: center;
-  flex-direction: column;    
-}
-.inner-block {
-  width: 450px;
-  margin: auto;
-  background: #ffffff;
-  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
-  padding: 40px 55px 45px 55px;
-  border-radius: 15px;
-  transition: all .3s;
-}
-.vertical-center .form-control:focus {
-  border-color: #2554FF;
-  box-shadow: none;
-}
-.vertical-center h3 {
-  text-align: center;
-  margin: 0;
-  line-height: 1;
-  padding-bottom: 20px;
-}
 label {
-  font-weight: 500;
-}
-.forgot-password,
-.forgot-password a {
-  text-align: right;
-  font-size: 13px;
-  padding-top: 10px;
-  color: #7a7a7a;
-  margin: 0;
-}
-.forgot-password a {
-  color: #2554FF;
-}
-.social-icons {
-  text-align: center;
-  font-family: "Open Sans";
-  font-weight: 300;
-  font-size: 1.5em;
-  color: #222222;
-}
-.social-icons ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.social-icons ul li {
-  display: inline-block;
-  zoom: 1;
-  width: 65px;
-  vertical-align: middle;
-  border: 1px solid #e3e8f9;
-  font-size: 15px;
-  height: 40px;
-  line-height: 40px;
-  margin-right: 5px;
-  background: #f4f6ff;
-}
-.social-icons ul li a {
   display: block;
-  font-size: 1.4em;
-  margin: 0 5px;
-  text-decoration: none;
+  margin-top: 10px;
 }
-.social-icons ul li a i {
-  -webkit-transition: all 0.2s ease-in;
-  -moz-transition: all 0.2s ease-in;
-  -o-transition: all 0.2s ease-in;
-  -ms-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
+.card-container.card {
+  max-width: 350px !important;
+  padding: 40px 40px;
 }
-.social-icons ul li a:focus i,
-.social-icons ul li a:active i {
-  transition: none;
-  color: #222222;
+.card {
+  background-color: #f7f7f7;
+  padding: 20px 25px 30px;
+  margin: 0 auto 25px;
+  margin-top: 50px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+.profile-img-card {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 10px;
+  display: block;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+.error-feedback {
+  color: red;
 }
 </style>
