@@ -8,29 +8,55 @@
     </h1>
   </div>
   <div class="container" style="text-align: right">
-    <button type="button" class="btn btn-primary" v-if="GStore.currentUser">Add new drug</button>
+    <button type="button" class="btn btn-primary" v-if="GStore.currentUser">
+      Add new drug
+    </button>
   </div>
 
   <!-- การ์ดยา -->
   <div class="row">
-    <dic class="col-3" v-for="drug in drugs" :key="drug">
+    <div class="col-12 col-md-6 col-lg-3" v-for="drug in drugs" :key="drug">
       <!-- Card  -->
       <div class="druglist">
-        <div class="card" style="width: 18rem">
-          <img src="@/assets/addimage.png" class="card-img-top" alt="..." />
+        <div class="card" style="width: auto">
+          <img
+            src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1179&q=80"
+            class="card-img-top"
+            alt="..."
+          />
           <div class="card-body">
-            <h5 class="card-title">{{ drug.name }}</h5>
+            <h4 class="card-title">{{ drug.name }}</h4>
             <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+              {{ drug.shortDesc }}
             </p>
-            <a href="#" class="btn btn-info btn-sm" @click="gotoMoreDetail(drug.id)">Detail</a>
-            
+            <a
+              href="#"
+              class="btn btn-info btn-sm"
+              @click="gotoMoreDetail(drug.id)"
+              >Detail</a
+            >
           </div>
         </div>
         <!-- Card end -->
       </div>
-    </dic>
+    </div>
+  </div>
+  <!-- Pagination-->
+
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-4" >
+      <ul class="pagination">
+        <li class="page-item">
+          <a class="page-link" href="#">Previous</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      </ul>
+    </div>
+    <div class="col"></div>
   </div>
 </template>
 

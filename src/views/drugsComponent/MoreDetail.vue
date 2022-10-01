@@ -1,47 +1,75 @@
 <template>
-  <div class="hello">
-    <h1
-      class="display-6"
-      style="color: #626262; text-align: center; margin: 0.5cm"
-    >
-      Drug Detail
-    </h1>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <button type="button" class="btn btn-dark" @click="back()">Back</button>
+      </div>
+      <div class="col">
+        <center>
+          <h1>
+            {{ drug.name }}
+          </h1>
+        </center>
+      </div>
+      <div class="col"></div>
+    </div>
   </div>
-  <button class="button3" @click="back()">Back</button>
-
-
 
   <!-- การ์ดยา -->
-  <div class="druglist">
-    <div class="row">
-      <div class="column">
-        <div class="card">
-          <div class="container" style="text-align: right">
-            <button class="button" @click="greet" v-if="!isLoading">Play voice</button>
-            <transition name="fade" v-if="isLoading">
-    <pulse-loader></pulse-loader>
-  </transition>
-            <!-- <button class="button1" v-if>Edit</button> -->
-          </div>
+  <div class="card">
+    <div class="card-body">
+      <center>
+      <img
+        style="width: 32rem"
+        src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1179&q=80"
+        class="img-thumbnail"
+        alt="..."
+      /></center>
 
-          <h1>Name: {{ drug.name }}</h1>
-          <h2>
-            Shot Description:
-            <h4>{{ drug.shortDesc }}</h4>
-          </h2>
-          <h2>
-            Description:
-            <h4>{{ drug.description }}</h4>
-          </h2>
-          <h2>
-            How to take:
-            <h4>{{ drug.howToTake }}</h4>
-          </h2>
-          
-          <font-awesome-icon icon="fa-sharp fa-solid fa-volume"  />
-          <!-- <button class="button">Delete</button> -->
-        </div>
+      <div style="text-align: left">
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          @click="greet"
+          v-if="!isLoading"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            fill="currentColor"
+            class="bi bi-volume-up-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"
+            />
+            <path
+              d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"
+            />
+            <path
+              d="M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8 3.49 3.49 0 0 1 8 10.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"
+            /></svg
+          >Play voice
+        </button>
+
+        <transition name="fade" v-if="isLoading">
+          <pulse-loader></pulse-loader>
+        </transition>
+        <!-- <button class="button1" v-if>Edit</button> -->
       </div>
+
+      <span><h3>Shot Description:</h3>  </span>
+      <p>{{ drug.shortDesc }}</p>
+      <hr>
+      <h3>Description:</h3>
+      <p>{{ drug.description }}</p>
+      <hr>
+      <h3>How to take:</h3>
+      <p>{{ drug.howToTake }}</p>
+
+      <font-awesome-icon icon="fa-sharp fa-solid fa-volume" />
+      <!-- <button class="button">Delete</button> -->
     </div>
   </div>
 </template>
@@ -50,7 +78,7 @@
 
 <script>
 import EventService from "@/service/EventService.js";
-import PulseLoader from 'vue-spinner/src/SyncLoader.vue'
+import PulseLoader from "vue-spinner/src/SyncLoader.vue";
 
 // import { watchEffect } from '@vue/runtime-core'
 // import * as yup from 'yup'
@@ -62,15 +90,15 @@ export default {
     return {
       drug: null,
       isLoading: true,
-      name: 'Hello world',
+      name: "Hello world",
       selectedVoice: 1,
       synth: window.speechSynthesis,
       voiceList: [],
-      greetingSpeech: new window.SpeechSynthesisUtterance()
+      greetingSpeech: new window.SpeechSynthesisUtterance(),
     };
   },
   components: {
-    PulseLoader
+    PulseLoader,
   },
   created() {
     // watchEffect(() => {
@@ -85,54 +113,54 @@ export default {
       });
     // })
   },
-  
-  mounted () {
+
+  mounted() {
     // wait for voices to load
     // I can't get FF to work without calling this first
     // Chrome works on the onvoiceschanged function
-    this.voiceList = this.synth.getVoices()
+    this.voiceList = this.synth.getVoices();
     if (this.voiceList.length) {
-      this.isLoading = false
+      this.isLoading = false;
     }
     this.synth.onvoiceschanged = () => {
-      this.voiceList = this.synth.getVoices()
+      this.voiceList = this.synth.getVoices();
       // give a bit of delay to show loading screen
       // just for the sake of it, I suppose. Not the best reason
       setTimeout(() => {
-        this.isLoading = false
-      }, 800)
-    }
-    this.listenForSpeechEvents()
+        this.isLoading = false;
+      }, 800);
+    };
+    this.listenForSpeechEvents();
   },
   methods: {
     back() {
-      this.$router.push({ path: '/' });
+      this.$router.push({ path: "/" });
     },
     /**
      * React to speech events
      */
-     listenForSpeechEvents () {
+    listenForSpeechEvents() {
       this.greetingSpeech.onstart = () => {
-        this.isLoading = true
-      }
+        this.isLoading = true;
+      };
       this.greetingSpeech.onend = () => {
-        this.isLoading = false
-      }
+        this.isLoading = false;
+      };
     },
     /**
      * Shout at the user
      */
-    greet () {
+    greet() {
       // it should be 'craic', but it doesn't sound right
-      this.greetingSpeech.text = `${this.drug.shortDesc}.`
-      this.greetingSpeech.voice = this.voiceList[this.selectedVoice]
-      this.synth.speak(this.greetingSpeech)
-    }
+      this.greetingSpeech.text = `${this.drug.shortDesc}.`;
+      this.greetingSpeech.voice = this.voiceList[this.selectedVoice];
+      this.synth.speak(this.greetingSpeech);
+    },
   },
 };
 </script>
 
-
+<!-- 
   <style scoped>
 /* การ์ด */
 * {
@@ -243,4 +271,4 @@ body {
 
 /* ตัวหนังสือ */
 </style>
- 
+  -->

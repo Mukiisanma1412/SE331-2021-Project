@@ -13,7 +13,8 @@
     </div>
   </nav>
 
-  <div class="container" id="content">
+  <div class="container">
+   
     <router-view />
   </div>
 </template>
@@ -62,5 +63,7 @@ export default {
   padding: 0.01cm;
   font-size: 5cm;
   border-bottom: 0.5px solid rgb(100, 96, 96);
+  margin-bottom: 16px;
 }
+
 </style>
