@@ -43,17 +43,48 @@
   </div>
   <!-- Pagination-->
 
-  <div class="row">
+  <div class="row" style="margin : 1rem">
     <div class="col"></div>
-    <div class="col-4" >
+    <div class="col-4">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item">
+            
+            <router-link
+              class="page-link"
+              :to="{ name: 'DrugDetail', query: { page: page - 1 } }"
+              rel="prev"
+              v-if="page != 1"
+            >
+              <span aria-hidden="true">&laquo;</span></router-link
+            >
+          </li>
+          <li class="page-item" v-for="page in totalPageRender" :key="page" >
+            <router-link
+              class="page-link"
+              :to="{ name: 'DrugDetail', query: { page: page } }"
+              rel="page"
+            >
+              <span aria-hidden="true"> {{page}} </span></router-link
+            >
+          </li>
+      
+          <li class="page-item">
+            <router-link
+              class="page-link"
+              :to="{ name: 'DrugDetail', query: { page: page + 1 } }"
+              rel="next"
+              v-if="hasNextPage"
+            >
+              <span aria-hidden="true">&raquo;</span></router-link
+            >
+          </li>
+        </ul>
+      </nav>
       <ul class="pagination">
-        <li class="page-item">
-          <a class="page-link" href="#">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        <li class="page-item"></li>
+
+        <li class="page-item"></li>
       </ul>
     </div>
     <div class="col"></div>
@@ -72,6 +103,14 @@ export default {
     currentUser() {
       return localStorage.getItem("user");
     },
+    hasNextPage() {
+      let totalPages = Math.ceil(this.totalEvents / 4);
+      return this.page < totalPages;
+    },
+    totalPageRender(){
+      let total = Math.ceil(this.totalEvents / 4);
+      return total;
+    }
   },
   name: "DrugDetail",
   props: {
@@ -101,7 +140,7 @@ export default {
   },
   created() {
     watchEffect(() => {
-      EventService.getEventLists(6, 1)
+      EventService.getEventLists(4, this.page)
         .then((response) => {
           console.log(response);
           this.drugs = response.data;
