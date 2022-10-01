@@ -6,38 +6,26 @@
     href="https://fonts.googleapis.com/css2?family=Material+Icons"
     rel="stylesheet"
   />
-  <div class="container">
-    <nav class="navbar navbar-light">
-      <router-link
-        to="/"
-        class="navbar-brand"
-        style="font-size: 20%; color: #efece8"
-        >Home</router-link
-      >
-      <router-link
-        to="/"
-        class="navbar-brand"
-        style="font-size: 11%; color: #848685"
-        >Purchasing Detail</router-link
-      >
 
-      <router-link
-        to="/"
-        class="navbar-brand"
-        style="font-size: 13%; color: #efece8"
-        >Log out</router-link
-      >
-    </nav>
-
-    <div class="container" id="content">
-      <router-view />
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Home</a>
     </div>
+  </nav>
+
+  <div class="container" id="content">
+    <router-view />
   </div>
 </template>
 
 <script>
 export default {
   inject: ["GStore"], //<--
+  computed: {
+    currentUser() {
+      return localStorage.getItem("user");
+    },
+  },
 };
 </script>
 

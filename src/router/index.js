@@ -1,64 +1,49 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
 import NProgress from 'nprogress'
-import PeopleLayout from "../views/PeopleLayout.vue"
-import PeopleDetail from "../views/peopleAndDetail/PeopleDetail.vue";
-import DoctorComment from "../views/peopleAndDetail/DoctorComment.vue"
-import VaccineDetail from "../views/peopleAndDetail/VaccineDetail.vue"
-import NotFound from "../views/NotFound.vue"
-import NetworkError from "../views/NetworkError.vue"
-import DrugDetail from "../views/DrugDetail.vue"
-import MoreDetail from "../views/MoreDetail.vue"
-import AddDrug from "../views/AddDrug.vue"
-import Auth from "../views/Auth.vue"
 
+import NotFound from "../views/AuthAndErrorHandler/NotFound.vue"
+import NetworkError from "../views/AuthAndErrorHandler/NetworkError.vue"
+
+import Auth from "../views/AuthAndErrorHandler/Auth.vue"
+
+import DrugDetail from "../views/drugsComponent/DrugDetail.vue"
+import MoreDetail from "../views/drugsComponent/MoreDetail.vue"
+import AddDrug from "../views/drugsComponent/AddDrug.vue"
 
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home,
+    name: 'DrugDetail',
+    component: DrugDetail,
     props: (route) => ({page: parseInt(route.query.page) || 1 })
   },
-  {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
-  },
+
  
-  {
-    path: '/people/:id',
-    name: 'PeopleLayout',
-    props: true,
-    component: PeopleLayout,
-    children: [
-      {
-        path: 'ppdetail',
-        name: 'PeopleDetail',
-        component: PeopleDetail
-      },
-      {
-        path: 'comment',
-        name: 'DoctorComment',
-        component: DoctorComment
-      },
-      {
-        path: 'vaccine/:Vid',
-        name: 'VaccineDetail',
-        component: VaccineDetail,
-        props: true,
-      },
-    ]
-  },
-  {
-    path: '/DrugDetail',
-    name: 'DrugDetail',
-    component: DrugDetail
-  },
+  // {
+  //   path: '/people/:id',
+  //   name: 'PeopleLayout',
+  //   props: true,
+  //   component: PeopleLayout,
+  //   children: [
+  //     {
+  //       path: 'ppdetail',
+  //       name: 'PeopleDetail',
+  //       component: PeopleDetail
+  //     },
+  //     {
+  //       path: 'comment',
+  //       name: 'DoctorComment',
+  //       component: DoctorComment
+  //     },
+  //     {
+  //       path: 'vaccine/:Vid',
+  //       name: 'VaccineDetail',
+  //       component: VaccineDetail,
+  //       props: true,
+  //     },
+  //   ]
+  // },
+
 
   {
   
