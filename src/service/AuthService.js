@@ -10,16 +10,10 @@ export default {
             localStorage.setItem('token', response.data.token)
             localStorage.setItem('user', JSON.stringify(response.data.user))
             GStore.currentUser = response.data.user
-
-            console.log("Log in")
-            console.log(response.data)
-            console.log(GStore.currentUser)
-            
             return Promise.resolve(response.data)
         }).catch((error) => {
             return Promise.reject(error)
         })
-
     },
 
     logout() {

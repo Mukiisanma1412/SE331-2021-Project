@@ -4,11 +4,11 @@
       class="display-6"
       style="color: #626262; text-align: center; margin: 0.5cm"
     >
-      Drug List
-    </h1>
+      Drug List </h1>
+
   </div>
   <div class="container" style="text-align: right">
-    <button type="button" class="btn btn-primary" v-if="GStore.currentUser">
+    <button type="button" class="btn btn-primary" v-if="currentUser" @click="goToAddDrug()">
       Add new drug
     </button>
   </div>
@@ -81,11 +81,7 @@
           </li>
         </ul>
       </nav>
-      <ul class="pagination">
-        <li class="page-item"></li>
-
-        <li class="page-item"></li>
-      </ul>
+      
     </div>
     <div class="col"></div>
   </div>
@@ -101,7 +97,7 @@ export default {
   inject: ["GStore"], //<--
   computed: {
     currentUser() {
-      return localStorage.getItem("user");
+      return localStorage.getItem('user')
     },
     hasNextPage() {
       let totalPages = Math.ceil(this.totalEvents / 4);
@@ -143,6 +139,7 @@ export default {
       EventService.getEventLists(4, this.page)
         .then((response) => {
           console.log(response);
+          console.log(localStorage.user);
           this.drugs = response.data;
           this.totalEvents = response.headers["x-total-count"];
         })
@@ -156,6 +153,9 @@ export default {
       console.log(id);
       this.$router.push("/MoreDetail/" + id);
     },
+    goToAddDrug(){
+      this.$router.push("/AddDrug")
+    }
   },
 };
 </script>

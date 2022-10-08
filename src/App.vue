@@ -10,21 +10,31 @@
   <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">Home</a>
+      <button class="btn btn-sm btn-outline-secondary" type="button"  @click="logout" v-if="currentUser">
+        Log out
+      </button>
     </div>
   </nav>
 
   <div class="container">
-   
     <router-view />
   </div>
 </template>
 
 <script>
+import AuthService from "@/service/AuthService.js";
+
 export default {
   inject: ["GStore"], //<--
   computed: {
     currentUser() {
       return localStorage.getItem("user");
+    },
+  },
+  methods: {
+    logout() {
+      AuthService.logout();
+      this.$router.go();
     },
   },
 };
@@ -65,5 +75,4 @@ export default {
   border-bottom: 0.5px solid rgb(100, 96, 96);
   margin-bottom: 16px;
 }
-
 </style>
