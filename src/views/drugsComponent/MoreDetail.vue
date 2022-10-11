@@ -11,7 +11,7 @@
           </h1>
         </center>
       </div>
-      <div class="col"></div>
+      <div class="col"> <a class="btn btn-sm btn-danger" @click="deleteEvent(drug.id)" v-if="currentUser"> Delete</a></div>
     </div>
   </div>
 
@@ -67,8 +67,7 @@
       <hr>
       <h3>How to take:</h3>
       <p>{{ drug.howToTake }}</p>
-
-      <font-awesome-icon icon="fa-sharp fa-solid fa-volume" />
+      <a class="btn btn-sm btn-danger" @click="deleteEvent(drug.id)" v-if="currentUser"> Edit </a>
       <!-- <button class="button">Delete</button> -->
     </div>
   </div>
@@ -86,6 +85,11 @@ import PulseLoader from "vue-spinner/src/SyncLoader.vue";
 
 export default {
   props: ["id"],
+  computed:{
+    currentUser() {
+      return localStorage.getItem('user')
+    },
+  },
   data() {
     return {
       drug: null,
@@ -156,6 +160,11 @@ export default {
       this.greetingSpeech.voice = this.voiceList[this.selectedVoice];
       this.synth.speak(this.greetingSpeech);
     },
+    deleteEvent(id){
+      console.log(id);
+      EventService.deleteEvent(id);
+      this.$router.go("/");
+    }
   },
 };
 </script>

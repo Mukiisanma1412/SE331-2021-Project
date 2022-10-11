@@ -9,7 +9,7 @@
   </div>
   <div class="container" style="text-align: right">
     <button type="button" class="btn btn-primary" v-if="currentUser" @click="goToAddDrug()">
-      Add new drug
+      + Add new drug
     </button>
   </div>
 
@@ -160,6 +160,8 @@ export default {
     deleteEvent(id){
       console.log(id);
       EventService.deleteEvent(id);
+      alert("Delete!");
+      this.$router.go("/");
     }
   },
 };
