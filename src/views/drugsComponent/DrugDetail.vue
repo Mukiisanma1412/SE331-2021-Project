@@ -35,6 +35,7 @@
               @click="gotoMoreDetail(drug.id)"
               >Detail</a
             >
+            <a class="btn btn-sm btn-danger" @click="deleteEvent(drug.id)" v-if="currentUser"> Delete</a>
           </div>
         </div>
         <!-- Card end -->
@@ -155,6 +156,10 @@ export default {
     },
     goToAddDrug(){
       this.$router.push("/AddDrug")
+    },
+    deleteEvent(id){
+      console.log(id);
+      EventService.deleteEvent(id);
     }
   },
 };
