@@ -67,7 +67,7 @@
       <hr>
       <h3>How to take:</h3>
       <p>{{ drug.howToTake }}</p>
-      <a class="btn btn-sm btn-danger" @click="deleteEvent(drug.id)" v-if="currentUser"> Edit </a>
+      <a class="btn btn-sm btn-danger" @click="gotoEditForm(drug.id)" v-if="currentUser"> Edit </a>
       <!-- <button class="button">Delete</button> -->
     </div>
   </div>
@@ -164,6 +164,9 @@ export default {
       console.log(id);
       EventService.deleteEvent(id);
       this.$router.go("/");
+    },
+    gotoEditForm(id){
+      this.$router.push({ path: `/${id}/edit` })
     }
   },
 };

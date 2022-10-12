@@ -39,8 +39,19 @@ export default {
       console.log(token);
     }
     
+  },
+  updateEvent(id,info){
+    
+    try {
+      return apiClient.put('/drugs/' + id, {
+        name: info.name,
+        description: info.description,
+        shortDesc: info.shortDesc,
+        howToTake: info.howToTake
+    });
+    } catch (error) {
+      console.log(error);
+    
+    }
   }
-  // delete(id) {
-  //     return apiClient.get("/drugs/" + id);
-  // },
 };

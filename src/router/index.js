@@ -9,6 +9,7 @@ import Auth from "../views/AuthAndErrorHandler/Auth.vue"
 import DrugDetail from "../views/drugsComponent/DrugDetail.vue"
 import MoreDetail from "../views/drugsComponent/MoreDetail.vue"
 import AddDrug from "../views/drugsComponent/AddDrug.vue"
+import EditForm from "../views/drugsComponent/EditForm.vue"
 
 const routes = [
   {
@@ -17,33 +18,6 @@ const routes = [
     component: DrugDetail,
     props: (route) => ({page: parseInt(route.query.page) || 1 })
   },
-
- 
-  // {
-  //   path: '/people/:id',
-  //   name: 'PeopleLayout',
-  //   props: true,
-  //   component: PeopleLayout,
-  //   children: [
-  //     {
-  //       path: 'ppdetail',
-  //       name: 'PeopleDetail',
-  //       component: PeopleDetail
-  //     },
-  //     {
-  //       path: 'comment',
-  //       name: 'DoctorComment',
-  //       component: DoctorComment
-  //     },
-  //     {
-  //       path: 'vaccine/:Vid',
-  //       name: 'VaccineDetail',
-  //       component: VaccineDetail,
-  //       props: true,
-  //     },
-  //   ]
-  // },
-
 
   {
   
@@ -58,6 +32,12 @@ const routes = [
     path: '/AddDrug',
     name: 'AddDrug',
     component: AddDrug
+  },
+  {
+    path: '/:id/edit',
+    name: 'EditForm',
+    props: true,
+    component: EditForm
   },
   {
     path: '/Auth',
