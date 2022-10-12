@@ -20,6 +20,7 @@
     "vee-validate": "^4.6.7",
     "vue": "^3.2.37",
     "vue-nprogress": "^0.2.0",
+    "vue-promise-dialogs": "^2.0.0",
     "vue-router": "^4.0.0-0",
     "vue-spinner": "^1.0.4",
     "vuex": "^4.0.0-0",

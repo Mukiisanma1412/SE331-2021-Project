@@ -10,7 +10,12 @@
   <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">Home</a>
-      <button class="btn btn-sm btn-outline-secondary" type="button"  @click="logout" v-if="currentUser">
+      <button
+        class="btn btn-sm btn-outline-secondary"
+        type="button"
+        @click="logout"
+        v-if="currentUser"
+      >
         Log out
       </button>
     </div>
@@ -18,6 +23,10 @@
 
   <div class="container">
     <router-view />
+  </div>
+
+  <div class=" container-fluid footer">
+    <p class="text-center">footer</p>
   </div>
 </template>
 
@@ -64,6 +73,13 @@ export default {
   -moz-osx-font-smoothing: grayscale;
 
   color: #292626;
+}
+.footer {
+  background: #f3f3f3;
+  color: #292626;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 </style>
 

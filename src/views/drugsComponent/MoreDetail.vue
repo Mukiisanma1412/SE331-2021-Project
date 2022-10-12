@@ -1,17 +1,18 @@
 <template>
   <div class="container">
-    <div class="row">
-      <div class="col">
+    <div class="row justify-content-md-center">
+      <div class="col-auto">
         <button type="button" class="btn btn-dark" @click="back()">Back</button>
       </div>
       <div class="col">
-        <center>
-          <h1>
+ 
+          <h1 class="text-center">
             {{ drug.name }}
           </h1>
-        </center>
+   
       </div>
-      <div class="col"> <a class="btn btn-sm btn-danger" @click="deleteEvent(drug.id)" v-if="currentUser"> Delete</a></div>
+      <div class="col-auto"> <a class="btn btn-sm btn-danger" @click="deleteEvent(drug.id)" v-if="currentUser"> Delete</a></div>
+      <div class="col-auto"> <a class="btn btn-sm btn-danger" @click="gotoEditForm(drug.id)" v-if="currentUser"> Edit </a> </div>
     </div>
   </div>
 
@@ -38,7 +39,7 @@
             width="32"
             height="32"
             fill="currentColor"
-            class="bi bi-volume-up-fill"
+            class="bi bi-volume-up-fill btn-sm"
             viewBox="0 0 16 16"
           >
             <path
@@ -67,7 +68,7 @@
       <hr>
       <h3>How to take:</h3>
       <p>{{ drug.howToTake }}</p>
-      <a class="btn btn-sm btn-danger" @click="gotoEditForm(drug.id)" v-if="currentUser"> Edit </a>
+      
       <!-- <button class="button">Delete</button> -->
     </div>
   </div>

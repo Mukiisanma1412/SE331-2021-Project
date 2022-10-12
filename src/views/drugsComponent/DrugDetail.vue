@@ -4,17 +4,22 @@
       class="display-6"
       style="color: #626262; text-align: center; margin: 0.5cm"
     >
-      Drug List </h1>
-
+      Drug List
+    </h1>
   </div>
   <div class="container" style="text-align: right">
-    <button type="button" class="btn btn-primary" v-if="currentUser" @click="goToAddDrug()">
+    <button
+      type="button"
+      class="btn btn-primary"
+      v-if="currentUser"
+      @click="goToAddDrug()"
+    >
       + Add new drug
     </button>
   </div>
 
   <!-- การ์ดยา -->
-  <div class="row">
+  <div class="row drugcard">
     <div class="col-12 col-md-6 col-lg-3" v-for="drug in drugs" :key="drug">
       <!-- Card  -->
       <div class="druglist">
@@ -29,13 +34,25 @@
             <p class="card-text">
               {{ drug.shortDesc }}
             </p>
-            <a
-              href="#"
-              class="btn btn-info btn-sm"
-              @click="gotoMoreDetail(drug.id)"
-              >Detail</a
-            >
-            <a class="btn btn-sm btn-danger" @click="deleteEvent(drug.id)" v-if="currentUser"> Delete</a>
+            <div class="row">
+              <div class="col-auto">
+                <a
+                  href="#"
+                  class="btn btn-info btn-sm"
+                  @click="gotoMoreDetail(drug.id)"
+                  >Detail</a
+                >
+              </div>
+              <div class="col-auto">
+                <a
+                  class="btn btn-sm btn-danger"
+                  @click="deleteEvent(drug.id)"
+                  v-if="currentUser"
+                >
+                  Delete</a
+                >
+              </div>
+            </div>
           </div>
         </div>
         <!-- Card end -->
@@ -43,48 +60,49 @@
     </div>
   </div>
   <!-- Pagination-->
+  <div class="d-flex justify-content-center">
+  <div class="row" style="margin: 1rem">
 
-  <div class="row" style="margin : 1rem">
-    <div class="col"></div>
     <div class="col-4">
       <nav aria-label="Page navigation example">
         <ul class="pagination">
           <li class="page-item">
-            
             <router-link
               class="page-link"
               :to="{ name: 'DrugDetail', query: { page: page - 1 } }"
               rel="prev"
-              v-if="page != 1"
+              :class ="{disabled : page == 1 }"
+             
             >
               <span aria-hidden="true">&laquo;</span></router-link
             >
           </li>
-          <li class="page-item" v-for="page in totalPageRender" :key="page" >
+          <li class="page-item" v-for="page in totalPageRender" :key="page">
             <router-link
               class="page-link"
               :to="{ name: 'DrugDetail', query: { page: page } }"
               rel="page"
             >
-              <span aria-hidden="true"> {{page}} </span></router-link
+              <span aria-hidden="true"> {{ page }} </span></router-link
             >
           </li>
-      
+
           <li class="page-item">
             <router-link
               class="page-link"
               :to="{ name: 'DrugDetail', query: { page: page + 1 } }"
               rel="next"
-              v-if="hasNextPage"
+             
+              :class ="{disabled : !hasNextPage }"
             >
               <span aria-hidden="true">&raquo;</span></router-link
             >
           </li>
         </ul>
       </nav>
-      
     </div>
-    <div class="col"></div>
+
+  </div>
   </div>
 </template>
 
@@ -98,16 +116,16 @@ export default {
   inject: ["GStore"], //<--
   computed: {
     currentUser() {
-      return localStorage.getItem('user')
+      return localStorage.getItem("user");
     },
     hasNextPage() {
       let totalPages = Math.ceil(this.totalEvents / 4);
       return this.page < totalPages;
     },
-    totalPageRender(){
+    totalPageRender() {
       let total = Math.ceil(this.totalEvents / 4);
       return total;
-    }
+    },
   },
   name: "DrugDetail",
   props: {
@@ -154,15 +172,20 @@ export default {
       console.log(id);
       this.$router.push("/MoreDetail/" + id);
     },
-    goToAddDrug(){
-      this.$router.push("/AddDrug")
+    goToAddDrug() {
+      this.$router.push("/AddDrug");
     },
-    deleteEvent(id){
+    deleteEvent(id) {
       console.log(id);
       EventService.deleteEvent(id);
       alert("Delete!");
       this.$router.go("/");
-    }
+    },
   },
 };
 </script>
+<style scoped>
+.drugcard {
+  margin-top: 1rem;
+}
+</style>
