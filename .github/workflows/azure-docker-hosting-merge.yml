@@ -33,7 +33,7 @@ jobs:
         name: prepare the docker-compose run
         run: |
               mkdir phamacy_linebot_frontend
-              cp docker-compose.yml docker-comopse.yml
+              cp docker-compose.yml phamacy_linebot_frontend/docker-comopse.yml
               cd phamacy_linebot_frontend
               docker-compose -H ${{ secrets.HOST_SERVER }} pull
               docker-compose -H ${{ secrets.HOST_SERVER }} up -d
