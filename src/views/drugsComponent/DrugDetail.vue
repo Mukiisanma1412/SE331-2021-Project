@@ -24,11 +24,7 @@
       <!-- Card  -->
       <div class="druglist">
         <div class="card" style="width: auto">
-          <img
-            src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1179&q=80"
-            class="card-img-top"
-            alt="..."
-          />
+          <img :src="drug.imgUrl" class="card-img-top" alt="..." />
           <div class="card-body">
             <h4 class="card-title">{{ drug.name }}</h4>
             <p class="card-text">
@@ -61,48 +57,44 @@
   </div>
   <!-- Pagination-->
   <div class="d-flex justify-content-center">
-  <div class="row" style="margin: 1rem">
+    <div class="row" style="margin: 1rem">
+      <div class="col-4">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item">
+              <router-link
+                class="page-link"
+                :to="{ name: 'DrugDetail', query: { page: page - 1 } }"
+                rel="prev"
+                :class="{ disabled: page == 1 }"
+              >
+                <span aria-hidden="true">&laquo;</span></router-link
+              >
+            </li>
+            <li class="page-item" v-for="page in totalPageRender" :key="page">
+              <router-link
+                class="page-link"
+                :to="{ name: 'DrugDetail', query: { page: page } }"
+                rel="page"
+              >
+                <span aria-hidden="true"> {{ page }} </span></router-link
+              >
+            </li>
 
-    <div class="col-4">
-      <nav aria-label="Page navigation example">
-        <ul class="pagination">
-          <li class="page-item">
-            <router-link
-              class="page-link"
-              :to="{ name: 'DrugDetail', query: { page: page - 1 } }"
-              rel="prev"
-              :class ="{disabled : page == 1 }"
-             
-            >
-              <span aria-hidden="true">&laquo;</span></router-link
-            >
-          </li>
-          <li class="page-item" v-for="page in totalPageRender" :key="page">
-            <router-link
-              class="page-link"
-              :to="{ name: 'DrugDetail', query: { page: page } }"
-              rel="page"
-            >
-              <span aria-hidden="true"> {{ page }} </span></router-link
-            >
-          </li>
-
-          <li class="page-item">
-            <router-link
-              class="page-link"
-              :to="{ name: 'DrugDetail', query: { page: page + 1 } }"
-              rel="next"
-             
-              :class ="{disabled : !hasNextPage }"
-            >
-              <span aria-hidden="true">&raquo;</span></router-link
-            >
-          </li>
-        </ul>
-      </nav>
+            <li class="page-item">
+              <router-link
+                class="page-link"
+                :to="{ name: 'DrugDetail', query: { page: page + 1 } }"
+                rel="next"
+                :class="{ disabled: !hasNextPage }"
+              >
+                <span aria-hidden="true">&raquo;</span></router-link
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
-
-  </div>
   </div>
 </template>
 
@@ -148,6 +140,9 @@ export default {
         },
         {
           howToTake: "",
+        },
+        {
+          imgUrl: "",
         },
       ],
       totalEvents: 0,
