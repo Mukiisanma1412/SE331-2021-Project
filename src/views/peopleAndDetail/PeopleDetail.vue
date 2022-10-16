@@ -14,7 +14,8 @@
 
               <div class="col-8">
                 <p class="card-text">
-                {{ people.age }}</p>
+                  {{ people.age }}
+                </p>
               </div>
             </div>
 
@@ -37,11 +38,11 @@
             <div class="row">
               <div class="col">Status :</div>
 
-              <div class="col-8"> {{people.status}}
+              <div class="col-8">
+                {{ people.status }}
                 <span v-if="people.status === ' 1 '"> dose</span>
-                <span v-else
-                  > doses
-                  <span class="material-icons"> check_circle </span></span
+                <span v-else>
+                  doses <span class="material-icons"> check_circle </span></span
                 >
               </div>
             </div>
@@ -65,4 +66,3 @@ export default {
   props: ["people"],
 };
 </script>
-

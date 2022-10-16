@@ -25,7 +25,7 @@
     <router-view />
   </div>
 
-  <div class=" container-fluid footer">
+  <div class="container-fluid footer">
     <p class="text-center">footer</p>
   </div>
 </template>
@@ -48,8 +48,6 @@ export default {
   },
 };
 </script>
-
-
 
 <style>
 @keyframes beautifade {
