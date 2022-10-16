@@ -24,7 +24,7 @@
       <!-- Card  -->
       <div class="druglist">
         <div class="card" style="width: auto">
-          <img :src="imgSrc()" class="card-img-top" alt="..." />
+          <img :src="imgSrc(drug.imgUrl)" class="card-img-top" alt="..." />
           <div class="card-body">
             <h4 class="card-title">{{ drug.name }}</h4>
             <p class="card-text">
