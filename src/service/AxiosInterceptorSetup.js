@@ -1,14 +1,14 @@
-import apiClient from '@/service/AxiosClient.js'
+import apiClient from "@/service/AxiosClient.js";
 
 apiClient.interceptors.request.use(
   (request) => {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem("token");
     if (token) {
-      request.headers['Authorization'] = 'Bearer ' + token
+      request.headers["Authorization"] = "Bearer " + token;
     }
-    return request
+    return request;
   },
   (error) => {
-    return Promise.reject(error)
+    return Promise.reject(error);
   }
-)
+);

@@ -1,60 +1,57 @@
 import { createRouter, createWebHistory } from "vue-router";
-import NProgress from 'nprogress'
+import NProgress from "nprogress";
 
-import NotFound from "../views/AuthAndErrorHandler/NotFound.vue"
-import NetworkError from "../views/AuthAndErrorHandler/NetworkError.vue"
+import NotFound from "../views/AuthAndErrorHandler/NotFound.vue";
+import NetworkError from "../views/AuthAndErrorHandler/NetworkError.vue";
 
-import Auth from "../views/AuthAndErrorHandler/Auth.vue"
+import Auth from "../views/AuthAndErrorHandler/Auth.vue";
 
-import DrugDetail from "../views/drugsComponent/DrugDetail.vue"
-import MoreDetail from "../views/drugsComponent/MoreDetail.vue"
-import AddDrug from "../views/drugsComponent/AddDrug.vue"
-import EditForm from "../views/drugsComponent/EditForm.vue"
+import DrugDetail from "../views/drugsComponent/DrugDetail.vue";
+import MoreDetail from "../views/drugsComponent/MoreDetail.vue";
+import AddDrug from "../views/drugsComponent/AddDrug.vue";
+import EditForm from "../views/drugsComponent/EditForm.vue";
 
 const routes = [
   {
     path: "/",
-    name: 'DrugDetail',
+    name: "DrugDetail",
     component: DrugDetail,
-    props: (route) => ({page: parseInt(route.query.page) || 1 })
+    props: (route) => ({ page: parseInt(route.query.page) || 1 }),
   },
 
   {
-  
-     path: '/MoreDetail/:id',
-     name: 'MoreDetail',
-     props: true,
-     component: MoreDetail
-    
-  },
-  
-  {
-    path: '/AddDrug',
-    name: 'AddDrug',
-    component: AddDrug
-  },
-  {
-    path: '/:id/edit',
-    name: 'EditForm',
+    path: "/MoreDetail/:id",
+    name: "MoreDetail",
     props: true,
-    component: EditForm
+    component: MoreDetail,
+  },
+
+  {
+    path: "/AddDrug",
+    name: "AddDrug",
+    component: AddDrug,
   },
   {
-    path: '/Auth',
-    name: 'Auth',
-    component: Auth
+    path: "/:id/edit",
+    name: "EditForm",
+    props: true,
+    component: EditForm,
   },
   {
-    path: '/404',
-    name: 'NotFound',
-    component: NotFound
-  }, 
+    path: "/Auth",
+    name: "Auth",
+    component: Auth,
+  },
   {
-    path: '/networkError',
-    name: 'NetworkError',
-    component: NetworkError
-  }, 
- 
+    path: "/404",
+    name: "NotFound",
+    component: NotFound,
+  },
+  {
+    path: "/networkError",
+    name: "NetworkError",
+    component: NetworkError,
+  },
 ];
 
 const router = createRouter({
@@ -63,11 +60,11 @@ const router = createRouter({
 });
 
 router.beforeEach(() => {
-  NProgress.start()
-})
+  NProgress.start();
+});
 
 router.afterEach(() => {
-  NProgress.done()
-})
+  NProgress.done();
+});
 
 export default router;

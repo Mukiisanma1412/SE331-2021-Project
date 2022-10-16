@@ -18,7 +18,7 @@
               class="page-link"
               id="page-prev"
               :to="{ name: 'DoctorComment' }"
-            >Doctor's recommandation</router-link
+              >Doctor's recommandation</router-link
             >
           </li>
           <li class="page-item">
