@@ -5,14 +5,28 @@
         <button type="button" class="btn btn-dark" @click="back()">Back</button>
       </div>
       <div class="col">
- 
-          <h1 class="text-center">
-            {{ drug.name }}
-          </h1>
-   
+        <h1 class="text-center">
+          {{ drug.name }}
+        </h1>
       </div>
-      <div class="col-auto"> <a class="btn btn-sm btn-danger" @click="deleteEvent(drug.id)" v-if="currentUser"> Delete</a></div>
-      <div class="col-auto"> <a class="btn btn-sm btn-danger" @click="gotoEditForm(drug.id)" v-if="currentUser"> Edit </a> </div>
+      <div class="col-auto">
+        <a
+          class="btn btn-sm btn-danger"
+          @click="deleteEvent(drug.id)"
+          v-if="currentUser"
+        >
+          Delete</a
+        >
+      </div>
+      <div class="col-auto">
+        <a
+          class="btn btn-sm btn-danger"
+          @click="gotoEditForm(drug.id)"
+          v-if="currentUser"
+        >
+          Edit
+        </a>
+      </div>
     </div>
   </div>
 
@@ -20,12 +34,13 @@
   <div class="card">
     <div class="card-body">
       <center>
-      <img
-        style="width: 32rem"
-        src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1179&q=80"
-        class="img-thumbnail"
-        alt="..."
-      /></center>
+        <img
+          style="width: 32rem"
+          :src="drug.imgUrl"
+          class="img-thumbnail"
+          alt="..."
+        />
+      </center>
 
       <div style="text-align: left">
         <button
@@ -50,8 +65,9 @@
             />
             <path
               d="M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8 3.49 3.49 0 0 1 8 10.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"
-            /></svg
-          > Play voice
+            />
+          </svg>
+          Play voice
         </button>
 
         <transition name="fade" v-if="isLoading">
@@ -60,21 +76,19 @@
         <!-- <button class="button1" v-if>Edit</button> -->
       </div>
 
-      <span><h3>Shot Description:</h3>  </span>
+      <span><h3>Shot Description:</h3> </span>
       <p>{{ drug.shortDesc }}</p>
-      <hr>
+      <hr />
       <h3>Description:</h3>
       <p>{{ drug.description }}</p>
-      <hr>
+      <hr />
       <h3>How to take:</h3>
       <p>{{ drug.howToTake }}</p>
-      
+
       <!-- <button class="button">Delete</button> -->
     </div>
   </div>
 </template>
-
-
 
 <script>
 import EventService from "@/service/EventService.js";
@@ -86,9 +100,9 @@ import PulseLoader from "vue-spinner/src/SyncLoader.vue";
 
 export default {
   props: ["id"],
-  computed:{
+  computed: {
     currentUser() {
-      return localStorage.getItem('user')
+      return localStorage.getItem("user");
     },
   },
   data() {
@@ -105,6 +119,26 @@ export default {
   components: {
     PulseLoader,
   },
+  beforeEnter: (to) => {
+      // <--- put API call here
+      return EventService.getEvent(to.params.id) // Return and params.id
+      .then(response => {
+        // Still need to set the data here
+        console.log(response);
+        this.drug = response.data;
+      })
+      .catch((error) => {
+        if (error.response && error.response.status == 404) {
+          return { // <--- Return
+            name: 'NotFound',
+        
+          }
+        } else {
+          return { name: 'NetworkError' } // <--- Return
+        }
+      })
+    },
+
   created() {
     // watchEffect(() => {
     EventService.getEvent(this.id)
@@ -115,6 +149,7 @@ export default {
       })
       .catch((error) => {
         console.log(error);
+        this.$router.push( {name: "NotFound"})
       });
     // })
   },
@@ -161,14 +196,14 @@ export default {
       this.greetingSpeech.voice = this.voiceList[this.selectedVoice];
       this.synth.speak(this.greetingSpeech);
     },
-    deleteEvent(id){
+    deleteEvent(id) {
       console.log(id);
       EventService.deleteEvent(id);
       this.$router.go("/");
     },
-    gotoEditForm(id){
-      this.$router.push({ path: `/${id}/edit` })
-    }
+    gotoEditForm(id) {
+      this.$router.push({ path: `/${id}/edit` });
+    },
   },
 };
 </script>

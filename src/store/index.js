@@ -5,5 +5,5 @@ export default createStore({
   mutations: {},
   actions: {},
   modules: {},
-  currentUser: null
+  currentUser: null,
 });

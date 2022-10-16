@@ -24,7 +24,7 @@
       <!-- Card  -->
       <div class="druglist">
         <div class="card" style="width: auto">
-          <img :src="drug.imgUrl" class="card-img-top" alt="..." />
+          <img :src="imgSrc()" class="card-img-top" alt="..." />
           <div class="card-body">
             <h4 class="card-title">{{ drug.name }}</h4>
             <p class="card-text">
@@ -118,6 +118,8 @@ export default {
       let total = Math.ceil(this.totalEvents / 4);
       return total;
     },
+   
+  
   },
   name: "DrugDetail",
   props: {
@@ -176,6 +178,14 @@ export default {
       alert("Delete!");
       this.$router.go("/");
     },
+    imgSrc(img){
+      if (img == null || img == 'undefined'){
+        return "https://images.unsplash.com/photo-1631549916768-4119b2e5f926?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1179&q=80"
+      }
+      else {
+        return img;
+      }
+    }
   },
 };
 </script>

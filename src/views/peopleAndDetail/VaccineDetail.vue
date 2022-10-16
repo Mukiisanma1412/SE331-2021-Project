@@ -8,7 +8,7 @@
         <p class="card-text">{{ Vaccine.detail }}</p>
       </div>
     </div>
-    <hr>
+    <hr />
     <div class="row">
       <div class="col"><b>Country</b> :</div>
       <div class="col-10">
@@ -36,12 +36,12 @@ export default {
       .catch((error) => {
         if (error.response && error.response.status == 404) {
           this.$router.push({
-            name: 'NotFound'
-          })
+            name: "NotFound",
+          });
         } else {
           this.$router.push({
-            name: 'NetworkError'
-          })
+            name: "NetworkError",
+          });
         }
       });
   },

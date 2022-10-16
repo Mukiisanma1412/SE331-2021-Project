@@ -1,14 +1,10 @@
 <template>
-
   <tr>
-    <td colspan="8">{{ people.name }}  {{ people.Surname }}</td>
+    <td colspan="8">{{ people.name }} {{ people.Surname }}</td>
     <td>{{ people.status }}</td>
     <td>
       <router-link :to="{ name: 'PeopleDetail', params: { id: people.id } }">
-      <span @click="detail" class="material-icons">
-trending_flat
-</span>
-
+        <span @click="detail" class="material-icons"> trending_flat </span>
       </router-link>
     </td>
   </tr>
@@ -23,20 +19,18 @@ export default {
       required: true,
     },
   },
-  inject: ['GStore'],
-   methods: {
+  inject: ["GStore"],
+  methods: {
     detail() {
-       this.GStore.flashMessage =
-       'You are in Information page ' 
-       setTimeout(() => {
-         this.GStore.flashMessage = ''
-       }, 3000)
-   this.$router.push({
-        name: 'PeopleDetail',
-       
-      })
-    }
-  }
+      this.GStore.flashMessage = "You are in Information page ";
+      setTimeout(() => {
+        this.GStore.flashMessage = "";
+      }, 3000);
+      this.$router.push({
+        name: "PeopleDetail",
+      });
+    },
+  },
 };
 </script>
 

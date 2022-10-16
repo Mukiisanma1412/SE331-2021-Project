@@ -50,7 +50,7 @@
 
     <!--! IMAGE -->
     <div class="input-group mb-3">
-      <label class="input-group-text" for="inputGroupFile01">Upload</label>
+      <label class="form-label" for="inputGroupFile01">Upload Image</label>
       <UploadImages @changed="handleImages" />
     </div>
 
@@ -93,9 +93,10 @@ export default {
 
         imgUrl: "",
       },
-
+      latestId : 0,
       totalEvents: 0,
       files: [],
+      res:[]
     };
   },
   // created() {
@@ -119,8 +120,11 @@ export default {
         })
       ).then((response) => {
         this.drugs.imgUrl = response.map((r) => r.data);
-        return EventService.addEvent(this.drugs);
+        return EventService.addEvent(this.drugs).then((res) => {
+          this.res = res
+        });
       });
+      this.$router.push("/" );
     },
     handleImages(files) {
       this.files = files;
